@@ -1,0 +1,38 @@
+{
+	"short_stories": [
+		{
+			"date": "2025-09-28",
+			"slug": "forest-entrance",
+			"title": "The Forest Entrance",
+			"blurb": "Every journey needs to start somewhere.",
+			"thumb": "./stories/forest-entrance/thumb.jpg",
+			"chapters": [
+				"./forest-entrance/story.md"
+			]
+		},
+		{
+			"date": "1970-01-01",
+			"slug": "unknown",
+			"title": "?????????",
+			"blurb": "?????????????????????",
+			"thumb": "./unknown.png",
+			"chapters": [
+				"./unknown/ch1.md",
+				"./unknown/ch2.md"
+			]
+		}
+	],
+
+	"fanfiction": [
+		{
+			"date": "2025-09-01",
+			"slug": "lanterns",
+			"title": "Lanterns",
+			"blurb": "In a familiar city, one more night, one more light.",
+			"thumb": "../custom/img/thumb_test.png",
+			"chapters": [
+				"./lanterns/ch1.md"
+			]
+		}
+	]
+}

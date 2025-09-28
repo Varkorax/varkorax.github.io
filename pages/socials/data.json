@@ -1,0 +1,14 @@
+[
+    {
+        "id": "thought-1",
+        "category": "thought",
+        "date": "2025-09-28",
+        "md": "socials/entries/thought-1.md"
+    },
+    {
+        "id": "update-1",
+        "category": "update",
+        "date": "2025-09-28",
+        "md": "socials/entries/update-1.md"
+    }
+]

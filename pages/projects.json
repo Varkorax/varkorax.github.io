@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "project-masseffect",
+    "title": "Milky Way Bar Crawl",
+    "tagline": "A modding guide/list for Mass Effect Legendary Edition.",
+    "thumbnail": "./projects/MWBC/thumb.png",
+    "link": "projects/project-masseffect.html",
+    "date": "2025-09-28",
+    "finished": false
+  },
+  {
+    "slug": "unknown-project",
+    "title": "?????????",
+    "tagline": "?????????????????????",
+    "thumbnail": "../custom/img/thumb-fallback.png",
+    "link": "projects/unknown.html",
+    "date": "1970-01-01",
+    "finished": true
+  }
+]

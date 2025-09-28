@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Encoding & Mobile Scaling -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Robots / Anti-AI -->
+		<meta name="robots" content="noai, noimageai, noindex, nofollow">
+		
+		<!-- Title & Favicon -->
+		<title>| Info</title>
+		<link rel="shortcut icon" type="image/x-icon" href="../custom/favicon.ico">
+		
+		<!-- Styles -->
+		<link rel="stylesheet" href="../custom/css/global.css">
+		
+		<style>
+			html, body {
+			  height: 100%;
+			  overflow-y: auto;
+			  background-color: rgba(0,0,0,0.1);
+			  backdrop-filter: blur(10px);
+			  -webkit-backdrop-filter: blur(10px);
+			}
+			.content {
+			  padding: 8px;
+			  text-align: left;
+			}
+			.content h2, p {
+				color: #ffffff;
+			}
+			a {
+				color: white;
+			}
+			/* scrollbar cosmetics (optional) */
+			::-webkit-scrollbar { width: 10px; }
+			::-webkit-scrollbar-track { box-shadow: inset 0 0 5px grey; border-radius: 10px; }
+			::-webkit-scrollbar-thumb { background: orange; border-radius: 10px; }
+		</style>
+	
+	</head>
+	
+	<body>
+		<div class="content small">
+			<h2>Project Version 1.01 | September 2025</h2>
+			<p>-</p>
+			<p>
+			CREDITS:<br><br>
+			
+			- Content -<br><br>
+			
+			No AI was used in the making of this page or any of the content therein. All code was written by me (Varkorax) for the express purpose of setting up a page where
+			I could share my thoughts and stories.<br><br>
+			
+			In other words, this is a strictly personal project with no commercial angle whatsoever.<br><br> If you need to contact me you can do so through my Socials, Github<br> or by sending an e-mail to:<br><a style="color: white" href="mailto:skorax2391@googlemail.com">skorax2391@googlemail.com</a><br><br>
+			
+			This site is hosted via GitHub Pages<br><br>
+			
+			- Fonts -<br><br>
+			
+			All Fonts on this site are licensed under the SIL Open Font License (https://openfontlicense.org/open-font-license-official-text/)<br><br>
+			
+			(Normal)<br><br>
+			- Crimson Text <a href="https://fonts.google.com/speciment/Crimson+Text">(https://fonts.google.com/specimen/Crimson+Text)</a><br>by Sebastian Kosch<br><br>
+			- IM Fell English <a href="https://fonts.google.com/specimen/IM+Fell+English">(https://fonts.google.com/specimen/IM+Fell+English)</a><br>by Igino Marini<br><br>
+			- Merriweather <a href="https://fonts.google.com/specimen/Merriweather">(https://fonts.google.com/specimen/Merriweather)</a><br>by Sorkin Type<br><br>
+			- Pixelify Sans <a href="https://fonts.google.com/specimen/Pixelify+Sans">(https://fonts.google.com/specimen/Pixelify+Sans)</a><br>by Stefie Justprince<br><br>
+			
+			(Accessible)<br><br>
+			- Lexend <a href="https://www.lexend.com">(https://www.lexend.com)</a><br>by Bonnie Shaver-Troup, Thomas Jockin, Santiago Orozco, Héctor Gómez and Superunion<br><br>
+			- Libre Baskerville <a href="https://fonts.google.com/specimen/Libre+Baskerville">(https://fonts.google.com/specimen/Libre+Baskerville)</a><br>by Impallari Type<br><br>
+			
+			- Images -<br><br>
+			
+			Backgrounds: 8Bit Day by Danny Care <a href="https://www.bitday.me">(https://www.bitday.me)</a><br><br>
+			Favicon: "Annoying Dog I squashed into a .ico file" (Annoying Dog belongs to Toby Fox. I drew and squashed the icon in Aseprite)<br><br>
+			Navbar Icons: Me (Also drawn in Aseprite)<br><br>
+			
+			Forest Entrance: Quick PS on <a href="https://unsplash.com/photos/brown-cave-with-light-during-daytime-XTDaKsPkgN4">Unsplash</a><br><br>
+			
+			
+			</p>
+		</div>
+		
+		<script>
+			// Mirror the parent’s logic for text color (just for this iframe’s content).
+			function applyIframeTextColor() {
+			  const mode = localStorage.getItem('userMode'); // 'day' | 'night' | null
+			  const hour = new Date().getHours();
+			  const isNightByClock = (hour >= 22 || hour < 6);
+			  const night = mode === 'night' || (mode !== 'day' && isNightByClock);
+			  const color = night ? '#f0f0f0' : '#000000';
+			  document.querySelectorAll('.content').forEach(el => { el.style.color = color; });
+			}
+			
+			function setMode(mode) {
+			  if (mode) {
+				localStorage.setItem('userMode', mode);
+			  } else {
+				localStorage.removeItem('userMode');
+			  }
+			
+			  // Update this iframe immediately…
+			  applyIframeTextColor();
+			
+			  // …and the parent will update itself automatically via the `storage` listener.
+			  // (Optionally also call it directly for belt & braces)
+			  if (window.parent && typeof window.parent.setBackgroundAndText === 'function') {
+				window.parent.setBackgroundAndText();
+			  }
+			}
+			
+			// If the parent changes mode (e.g., from another iframe), reflect it here.
+			window.addEventListener('storage', (e) => {
+			  if (e.key === 'userMode') applyIframeTextColor();
+			});
+			
+			// Initial paint
+			applyIframeTextColor();
+		</script>
+	</body>
+</html>
