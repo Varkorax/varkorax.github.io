@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>| LE1</title>
+    <link rel="shortcut icon" href="./custom/favicon.svg" />
+
+    <link rel="stylesheet" href="./custom/css/guide.css" />
+    <!-- ME1 (blue) -->
+    <style>
+        :root{
+            --accent-r: 60;  --accent-g: 130; --accent-b: 220; /* classic ME1 blue */
+            --accent: var(--accent-r),var(--accent-g),var(--accent-b);
+        }
+		.download-thumb {
+			width: 480px;   /* or whatever looks clean in your layout */
+			border-radius: 6px;
+			cursor: pointer;
+			transition: transform .15s ease;
+		}
+		
+		.download-thumb:hover {
+			transform: scale(1.01);
+			box-shadow: 0 0 5px rgba(var(--accent));
+		}
+    </style>
+</head>
+<body>
+
+    <!-- Background (single reliable layer) -->
+    <div class="bg-viewport" aria-hidden="true">
+        <div id="bgLayer" class="bg-layer" style="background-image:url('./custom/img/background/bg-me1.webp');"></div>
+    </div>
+    <div class="bg-vignette" aria-hidden="true"></div>
+
+    <div class="layout" id="layoutRoot">
+
+        <!-- LEFT -->
+        <aside class="left-panel" id="leftPanel" role="navigation" aria-label="Chapters">
+            <h3>Bar Crawl</h3>
+            <ul class="chap-list" id="chapList">
+                <li class="chap-item" data-href="intro.html">
+                    <a class="chap-link" href="intro.html">1. Introduction</a>
+                </li>
+
+                <li class="chap-item" data-href="setup.html">
+                    <a class="chap-link" href="setup.html">2. Setup</a>
+                </li>
+
+                <!-- Mod List is a vertical collapsible parent. Starts open. -->
+                <li class="chap-item parent open" id="modListParent" aria-expanded="true">
+                    <div class="parent-header" role="button" tabindex="0" aria-expanded="true">
+                        <button class="tog" aria-hidden="true">▾</button>
+                        <span class="label">3. Modding</span>
+                    </div>
+                    <ul class="sub-list" role="menu" aria-label="Mod List subchapters">
+						<li class="sub-item" role="none"><a role="menuitem" href="me1.html">3.1. LE1</a></li>
+                        <li class="sub-item" role="none"><a role="menuitem" href="me2.html">3.2. LE2</a></li>
+                        <li class="sub-item" role="none"><a role="menuitem" href="me3.html">3.3. LE3</a></li>
+                    </ul>
+                </li>
+
+                <li class="chap-item" data-href="finish.html">
+                    <a class="chap-link" href="finish.html">4. Finish</a>
+                </li>
+
+                <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+
+                <h3>After Hours</h3>
+
+                <li class="chap-item" data-href="extras.html">
+                    <a class="chap-link" href="extras.html">5. Extras</a>
+                </li>
+
+                <li class="chap-item" data-href="textures.html">
+                    <a class="chap-link" href="textures.html">6. Textures</a>
+                </li>
+
+                <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+
+                <h3>Admin</h3>
+
+                <li class="chap-item" data-href="changelog.html">
+                    <a class="chap-link" href="changelog.html">7. Changelog</a>
+                </li>
+
+                <li class="chap-item" data-href="credits.html">
+                    <a class="chap-link" href="credits.html">8. Credits</a>
+                </li>
+            </ul>
+
+            <hr style="color:#fff;width:75%;margin-left:0">
+            <hr style="color:#fff;width:50%;margin-left:0">
+            <p class="text-standard" style="text-align:left;">Last Updated:<br> Oct 2025 (v.1.0)</p>
+
+        </aside>
+
+        <!-- CENTER -->
+        <main class="center-col" role="main">
+            <div class="content-shell" id="contentShell">
+
+                <div class="title-box">
+                    <!-- <div id="titleBackground" class="title-bg" style="background-image:url('./custom/img/title-candidate2.jpg');"></div> -->
+                    <div id="titleBackground" class="title-bg"></div>
+                    <h1 id="projectTitle">Milky Way Bar Crawl - LE1</h1>
+                    <button id="fontToggle" class="btn text-standard" aria-label="Toggle accessible fonts" title="Font Toggle">Aa</button>
+                </div>
+
+                <article class="content-box" id="contentBox" tabindex="0" aria-labelledby="stepTitle">
+
+                    <!-- Panel 0 -->
+					<section id="preamble" class="panel open" data-index="0">
+						<header class="panel-header" role="button" aria-expanded="true">
+							<h3>A New Adventure</h3>
+							<div class="caret">▾</div>
+						</header>
+
+						<div class="panel-body">
+							<p class="text-standard">
+								The crawl begins - <b>Mass Effect 1</b>, where it all started.
+								A little rough, a little clunky, but full of heart and promise.
+								This leg of the journey focuses on smoothing edges, tightening seams, and keeping the magic intact.
+							</p>
+							<p class="text-standard">
+								Grab your drink, check your squad’s tabs, and let’s head out across the Citadel and beyond.
+								<br><br>
+								<b>A note on downloading mods</b>:
+							</p>
+							<div style="margin-top:8px">
+								<button id="toggleTextureImgBtn" class="btn">Open/Close</button>
+							</div>
+							<div id="textureImgWrap" class="hidden-media" aria-hidden="true" style="margin-top:10px">
+								<div class="media-body">
+									<div class="caution">
+									<div class="icon">?!</div>
+									<p class="text-standard">
+									A few mods on this list are quite big and <b>will take a long time to download as a free user</b>.<br>
+									You may wish to <b>get a month of premium</b> to cut down on wait times.<br>
+									Some mods, like ALOV, offer a <b>torrent</b> as alternative solution.<br>
+									Should you choose to make use of that, I recommend <b><u><a href="https://www.qbittorrent.org">QBitTorrent</a></u></b>.
+									</p>
+								</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+                    <!-- Batch Section -->
+                    <section id="batch" class="panel" data-index="1">
+						<header class="panel-header" role="button" aria-expanded="true">
+							<h3>Batch</h3>
+							<div class="caret">▾</div>
+						</header>
+
+						<div class="panel-body">
+							<p class="text-standard">
+								A curated night around the galaxy awaits those partaking in my vision.<br>
+								To start, download your menu for the evening:<br>
+							</p>
+							
+							<hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+							
+							<p class="text-standard">
+								<br><b>Flux Fizz:</b> A crisp, spirited opener - refreshing the legend from the very first sip.<br><br>
+								<em>Download it directly here:</em><br>
+								
+								<a href="./files/Flux Fizz (Milky Way Bar Crawl).biq2" download>
+									<img src="./custom/img/guide-flux-fizz.png" 
+										 alt="Flux Fizz Batch File" 
+										 class="download-thumb">
+								</a>
+								<br>
+								
+								<em>or from the Nexus page:</em><br>
+								<em>(Nexus link to my guide once it's online)</em><br><br>
+							</p>
+							
+							<hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+							
+							<div id="batch-starting" class="anchor" data-parent="preamble">
+								<h4>Installation</h4>
+								<p class="text-standard">
+									Who says the journey need be any less than the destination? Here’s the secret to a good bar crawl:
+								</p>
+								
+								<ol class="text-standard">
+									<li>Open <b>M3</b>.</li>
+									<li>Navigate to <b>Mod Management → Batch Mod Installer</b>.</li>
+									<li>
+										- If you downloaded the list through M3, it will appear automatically.<br>
+										- If you downloaded it manually, place the file into: 
+										<code>(Your M3 folder)/mods/BatchModQueues</code><br>
+										Then reopen the Batch Mod Installer.
+									</li>
+									<li>
+										Go down the list and <b>download each mod <u>through</u> the Batch Mod Installer</b> to ensure you get the correct versions.<br>
+										<em>Depending on file sizes and whether you’re on free or premium Nexus, this may take a bit - please be patient with our aging barman.</em>
+									</li>
+									<li>Once all mods are downloaded, click <b>Install this group</b> and wait for the process to finish.</li>
+									<li>Launch the game once to confirm everything works.</li>
+									<li>Enjoy the rest of your night and proceed to Finish.</li>
+								</ol>
+							</div>
+						</div>
+					</section>
+
+                    <!-- Manual Section -->
+					<section id="manual" class="panel" data-index="2">
+						<header class="panel-header" role="button" aria-expanded="true">
+							<h3>Manual</h3>
+							<div class="caret">▾</div>
+						</header>
+
+						<div class="panel-body">
+							<p class="text-standard">
+								An unforgettable selection awaits the adventurous soul - those who wish to color the night to their own liking.
+							</p>
+
+							<div id="manual-mod-note" class="anchor" data-parent="manual">
+								<h4>Patches / Compatibility / Downloads</h4>
+								<p class="text-standard">
+									Thanks to the install order below, all required compatibility patches will appear at the correct time.<br>
+									You can simply follow the list from top to bottom.
+								</p>
+							</div>
+							
+							<br>
+							<hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+
+							<!-- Core Foundation -->
+							<div id="unofficial-patch" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/23" target="_blank">LE1 Community Patch</a></u></b></h4>
+								<p class="text-standard">
+									Fixes thousands of bugs in the game and is foundational for a lot of other mods.
+								</p>
+							</div>
+
+							<div id="myriad-pro-begone" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1070" target="_blank">Myriad Pro Begone</a></u></b></h4>
+								<p class="text-standard">
+									Replaces the font used throughout the game with something more fitting for the setting.<br>
+									<b>Note</b>: You need to install this <b>after</b> the Community Patch for technical reasons.<br>
+									<b>Note</b>: The file you download has a version for every game plus the Launcher. You may import everything if you want or just choose the LE1 version.
+								</p>
+							</div>
+
+							<div id="adv-weapon" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/853" target="_blank">Advanced Weapon Models</a></u></b></h4>
+								<p class="text-standard">
+									Replaces Weapon Models with updated counterparts from LE2 or LE3.<br>
+									<b>Note</b>: If you plan to use LE1 Diversification Project this is a required mod.
+								</p>
+							</div>
+
+							<div id="hal-hairpack" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1497" target="_blank">Halcyon Hairpack</a></u></b></h4>
+								<p class="text-standard">
+									Over a dozen new Hairstyles for NPCs based on designs from The Outer Worlds.<br>
+									<b>Note</b>: If you plan to use LE1 Diversification Project this is a required mod.
+								</p>
+							</div>
+
+							<div id="app-conf" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2513" target="_blank">Appearance Modification Menu</a></u></b></h4>
+								<p class="text-standard">
+									Allows you to override the casual and combat appearance for yourself and your companions.<br>
+									Think of it like a Transmog system.
+								</p>
+							</div>
+
+							<div id="get-ro" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2599" target="_blank">Geth Retrofits</a></u></b></h4>
+								<p class="text-standard">
+									Overhauls and diversifies the Geth enemies to bring them in line with LE3.<br>
+									<b>Note</b>: This mod <b>requires</b> Appearance Modification Menu.
+								</p>
+							</div>
+
+							<div id="weapon-loadouts" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/870" target="_blank">Streamlined Weapon Loadouts</a></u></b></h4>
+								<p class="text-standard">
+									Limits the weapons each character can equip to those their class is proficient in, similarly to how it works in LE2 and LE3.
+								</p>
+							</div>
+
+							<div id="comp-weaponry" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/639" target="_blank">Elements of Comparative Weaponry</a></u></b></h4>
+								<p class="text-standard">
+									More accurate and relevant weapon stats for easier comparison.
+								</p>
+							</div>
+
+							<div id="pinnacle-dlc" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/832" target="_blank">Pinnacle Station DLC</a></u></b></h4>
+								<p class="text-standard">
+									Restores the DLC that was lost in the transition to the LE.
+								</p>
+							</div>
+
+							<!-- Private Terminal Mini-Branch -->
+							<div id="priv-term" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1525" target="_blank">Private Message Terminal</a></u></b></h4>
+								<p class="text-standard">
+									Adds a message terminal to the CIC and Shepard's cabin, similar to the ones in LE2 or LE3.
+								</p>
+							</div>
+
+							<div id="priv-help" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1526" target="_blank">A Little Help From My Friends</a></u></b></h4>
+								<p class="text-standard">
+									Receive messages from your friends on the Normandy to help you with the collection assignments.<br>
+									<b>Note</b>: This mod requires Private Message Terminal.
+								</p>
+							</div>
+
+							<div id="priv-eclectic" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1563" target="_blank">Eclectic Emails</a></u></b></h4>
+								<p class="text-standard">
+									Receive messages throughout the game to organically introduce and flesh out aspects like characters or missions.<br>
+									<b>Note</b>: This mod requires Private Message Terminal.
+								</p>
+							</div>
+
+							<div id="me-dossiers" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2800" target="_blank">ME1 Dossiers Restored</a></u></b></h4>
+								<p class="text-standard">
+									Restores cut messages and dossiers from the defunct ME1 website.<br>
+									<b>Note</b>: This mod requires Private Message Terminal.
+								</p>
+							</div>
+
+							<!-- QoL / Gameplay Block -->
+							<div id="casual-hubs" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/574" target="_blank">Casual Hubs</a></u></b></h4>
+								<p class="text-standard">
+									You and your squadmates wear casual outfits during hub visits (e.g. Citadel) instead of armor.
+								</p>
+							</div>
+
+							<div id="black-market" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/661" target="_blank">Black Market License</a></u></b></h4>
+								<p class="text-standard">
+									Restores powerful, cut gear for you to find all over the galaxy.<br>
+									<b>Note</b>: You may find these additions overpowered. Thankfully you can remove them from the loot pool again through the same store you get the titular license from.
+								</p>
+							</div>
+
+							<div id="return-norm" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1580" target="_blank">Return to Normandy Button</a></u></b></h4>
+								<p class="text-standard">
+									Allows you to return to the Normandy from the map screen instead of having to walk back.
+								</p>
+							</div>
+
+							<div id="norm-rapid" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/755" target="_blank">Normandy Rapid Transit</a></u></b></h4>
+								<p class="text-standard">
+									Allows you to return to the Normandy through the Rapid Transit terminals instead of having to walk.
+								</p>
+							</div>
+
+							<div id="skip-mini" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/360" target="_blank">Skip Minigames</a></u></b></h4>
+								<p class="text-standard">
+									Allows you to skip the thrilling minigames you definitely won't get sick of after thirty hours.
+								</p>
+							</div>
+
+							<div id="charted-worlds" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/524" target="_blank">Charted Worlds</a></u></b></h4>
+								<p class="text-standard">
+									Unveils Points of Interests on the Uncharted World maps.
+								</p>
+							</div>
+
+							<div id="gal-track" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/426" target="_blank">Galaxy Map Trackers</a></u></b></h4>
+								<p class="text-standard">
+									Tracks active and undiscovered assignments on the galaxy map.
+								</p>
+							</div>
+
+							<div id="miss-time" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/754" target="_blank">Mission Timings</a></u></b></h4>
+								<p class="text-standard">
+									Virmire now won't unlock until you've done the other three main missions.
+								</p>
+							</div>
+
+							<div id="n7-mako" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/309" target="_blank">N7 Mako</a></u></b></h4>
+								<p class="text-standard">
+									Rebalances the handling of the Mako ground vehicle.
+								</p>
+							</div>
+
+							<div id="xp-rescale" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/369" target="_blank">XP Rescale</a></u></b></h4>
+								<p class="text-standard">
+									Rebalances XP gains to make reaching max level in one playthrough possible.<br>
+									<b>Note</b>: I recommend the default option.
+								</p>
+							</div>
+
+							<div id="heart-exp" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/597" target="_blank">
+									Dr. Heart Experiments</a></u></b></h4>
+								<p class="text-standard">
+									Changes the appearance of an enemy to make them unique and better match the quest.
+								</p>
+							</div>
+
+							<div id="alt-feros" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1864" target="_blank">
+									Alternate Feros Claw Cutscene</a></u></b></h4>
+								<p class="text-standard">
+									Changes a cutscene on Feros to a cut version which I think makes the scene flow better.
+								</p>
+							</div>
+
+							<div id="mira-quiet" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/734" target="_blank">Mira Please Be Quiet</a></u></b></h4>
+								<p class="text-standard">
+									Disables the annoying ambient lines of a certain character on Noveria.<br>
+									<b>Note</b>: USER ALERT
+								</p>
+							</div>
+							
+							<!-- Character Consistency -->
+							
+							<div id="saren-stages" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/666" target="_blank">Saren Stages</a></u></b></h4>
+								<p class="text-standard">
+									Changes Saren's appearance throughout the game as he loses his mind.<br>
+									<b>Note</b>: If you want to use Diversification Project pick the default option.
+								</p>
+							</div>
+
+							<div id="alliance-con" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/799" target="_blank">Alliance Uniform Consitency</a></u></b></h4>
+								<p class="text-standard">
+									Updates Alliance Uniforms to bring them in line with LE3.
+								</p>
+							</div>
+
+							<div id="liara-con" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1183" target="_blank">
+									Liara Consistency Mod</a></u></b></h4>
+								<p class="text-standard">
+									Updates Liara's design to bring her in line with the later games.<br>
+									<b>Note</b>: You have two options here. Personally I recommend her LE3 appearance to have her be consistent throughout the trilogy.<br>
+								</p>
+							</div>
+							
+									<div id="me-light" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1500" target="_blank">MELLO</a></u></b></h4>
+								<p class="text-standard">
+									Completely restores the broken dynamic lighting in the game.<br>
+									<b>Note</b>: I recommend choosing the default option even if you plan on having some effects disabled.
+								</p>
+							</div>
+
+							<div id="feros-color" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/927" target="_blank">Remove Feros Color Filter</a></u></b></h4>
+								<p class="text-standard">
+									The LE added a yellow filter to Feros that I personally really dislike. This mod removes it.
+								</p>
+							</div>
+
+							<!-- Final Big Mods and Polish -->
+							<div id="me-diverse" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1172" target="_blank">LE1 Diversification Project</a></u></b></h4>
+								<p class="text-standard">
+									A massive overhaul of every part of the game with the goal of making the world feel more lived in.
+								</p>
+							</div>
+
+							<div id="keep-find" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1043" target="_blank">Keepers Finders</a></u></b></h4>
+								<p class="text-standard">
+									Marks the location of all Keepers on your map for the relevant quest.
+								</p>
+							</div>
+
+							<div id="me-videos" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/3" target="_blank">A Lot Of Videos</a></u></b></h4>
+								<p class="text-standard">
+									Manually upscaled all pre-rendered videos in the game to 4k60fps.
+								</p>
+							</div>
+
+							<div id="smooth-gui" class="anchor" data-parent="manual">
+								<h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2121" target="_blank">Smoother GUI</a></u></b></h4>
+								<p class="text-standard">
+									The GUI elements (menus, etc.) in the game are rendered at 30fps. This mod adjusts them to 60fps.
+								</p>
+							</div>
+							
+							<br>
+							<hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+
+							<div id="manual-mod-patches" class="anchor" data-parent="manual">
+								<h4>Patch Notes</h4>
+								<p class="text-standard">
+									All necessary compatibility patches should have appeared at the right time during installation.<br>
+									If a patch option did <em>not</em> appear for a mod, simply reinstall that single mod to refresh its patch list.<br><br>
+									Otherwise, no additional steps are required - you're good to go.<br>
+									Proceed to the next game or go to Finish.
+								</p>
+							</div>
+							
+						</div>
+					</section>
+                </article>
+
+                <!-- Pager -->
+                <div class="pager-box pager" role="navigation" aria-label="Panel navigation">
+                    <div class="pager-left">
+                        <button class="btn text-standard" id="expandAllBtn" aria-label="Expand all panels">Expand All</button>
+                        <button class="btn text-standard" id="closeAllBtn" aria-label="Close all panels">Close All</button>
+                    </div>
+
+                    <div class="pager-right">
+                        <button class="btn text-standard" id="prevPageBtn" aria-label="Previous page">Prev Page</button>
+                        <button class="btn text-standard" id="nextPageBtn" aria-label="Next page">Next Page</button>
+                    </div>
+                </div>
+
+                <div class="bottom-strip" aria-hidden="true"></div>
+            </div>
+        </main>
+
+        <!-- RIGHT -->
+        <aside class="right-panel">
+            <div class="contents-panel" role="navigation" aria-label="Contents">
+                <h4>Content</h4>
+                <nav>
+                    <ul id="contentsList" class="contents-list"></ul>
+                </nav>
+            </div>
+
+            <div class="made-by" role="contentinfo">
+                Made with <span class="heart">♥</span> by <span class="name"><a href="https://varkorax.github.io" target="_blank">Varkorax</a></span>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="./custom/js/guide.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('fontToggle');
+            const key = 'accessibleFonts';
+            const enabled = localStorage.getItem(key) === 'true';
+
+            if (enabled) document.body.classList.add('accessible-fonts');
+
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('accessible-fonts');
+                localStorage.setItem(key, document.body.classList.contains('accessible-fonts'));
+            });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <title>| Extras</title>
+    <link rel="shortcut icon" href="./custom/favicon.svg" />
+    
+    <link rel="stylesheet" href="./custom/css/guide.css" />
+    <style>
+    :root{
+        --accent-r: 145; --accent-g: 90; --accent-b: 180; /* soft violet */
+        --accent: var(--accent-r),var(--accent-g),var(--accent-b);
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Background (single reliable layer) -->
+    <div class="bg-viewport" aria-hidden="true">
+        <div id="bgLayer" class="bg-layer" style="background-image:url('./custom/img/background/bg-extra.webp');"></div>
+    </div>
+    <div class="bg-vignette" aria-hidden="true"></div>
+
+    <div class="layout" id="layoutRoot">
+
+        <!-- LEFT -->
+        <aside class="left-panel" id="leftPanel" role="navigation" aria-label="Chapters">
+            <h3>Bar Crawl</h3>
+            <ul class="chap-list" id="chapList">
+                <li class="chap-item" data-href="intro.html">
+                    <a class="chap-link" href="intro.html">1. Introduction</a>
+                </li>
+
+                <li class="chap-item" data-href="setup.html">
+                    <a class="chap-link" href="setup.html">2. Setup</a>
+                </li>
+                
+                <!-- Mod List is a vertical collapsible parent. Starts open. -->
+                <li class="chap-item parent open" id="modListParent" aria-expanded="true">
+                    <div class="parent-header" role="button" tabindex="0" aria-expanded="true">
+                        <button class="tog" aria-hidden="true">▾</button>
+                        <span class="label">3. Modding</span>
+                    </div>
+                    <ul class="sub-list" role="menu" aria-label="Mod List subchapters">
+						<li class="sub-item" role="none"><a role="menuitem" href="me1.html">3.1. LE1</a></li>
+                        <li class="sub-item" role="none"><a role="menuitem" href="me2.html">3.2. LE2</a></li>
+                        <li class="sub-item" role="none"><a role="menuitem" href="me3.html">3.3. LE3</a></li>
+                    </ul>
+                </li>
+                
+                <li class="chap-item" data-href="finish.html">
+                    <a class="chap-link" href="finish.html">4. Finish</a>
+                </li>
+                
+                <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+                
+                <h3>After Hours</h3>
+                
+                <li class="chap-item" data-href="extras.html">
+                    <a class="chap-link" href="extras.html">5. Extras</a>
+                </li>
+                
+                <li class="chap-item" data-href="textures.html">
+                    <a class="chap-link" href="textures.html">6. Textures</a>
+                </li>
+                
+                <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+                
+                <h3>Admin</h3>
+                
+                <li class="chap-item" data-href="changelog.html">
+                    <a class="chap-link" href="changelog.html">7. Changelog</a>
+                </li>
+                
+                <li class="chap-item" data-href="credits.html">
+                    <a class="chap-link" href="credits.html">8. Credits</a>
+                </li>
+            </ul>
+            
+            <hr style="color:#fff;width:75%;margin-left:0">
+            <hr style="color:#fff;width:50%;margin-left:0">
+            <p class="text-standard" style="text-align:left;">Last Updated:<br> Oct 2025 (v.1.0)</p>
+            
+        </aside>
+
+        <!-- CENTER -->
+        <main class="center-col" role="main">
+            <div class="content-shell" id="contentShell">
+
+                <div class="title-box">
+                    <!-- <div id="titleBackground" class="title-bg" style="background-image:url('./custom/img/title-candidate2.jpg');"></div> -->
+                    <div id="titleBackground" class="title-bg"></div>
+                    <h1 id="projectTitle">Milky Way Bar Crawl - Extras</h1>
+                    <button id="fontToggle" class="btn text-standard" aria-label="Toggle accessible fonts" title="Font Toggle">Aa</button>
+                </div>
+
+                <article class="content-box" id="contentBox" tabindex="0" aria-labelledby="stepTitle">
+                    
+                    <!-- Panel 0 -->
+                    <section id="preamble" class="panel open" data-index="0">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>Time To Choose</h3>
+                            <div class="caret">▾</div>
+                        </header>
+
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                Welcome to the Extras Section!<br><br>
+                                Here you will find mods that could prove to be a good addition to your list. Each one comes recommended, though I am not using all of them myself.<br>
+                                As such I can only offer limited support and need you to be extra vigilant in what you install and how to do so.
+                            </p>
+                            
+                            <!-- Subsection 0.1 -->
+                            <div id="preamble-last" class="anchor" data-parent="preamble">
+                                <h4>A Note on Appearance Mods</h4>
+                                <div class="caution">
+                                    <div class="icon">!</div>
+                                    <p class="text-standard">
+                                        Many appearance mods require you to use the <b><u><a href="https://github.com/KarlitosVII/trilogy-save-editor">Trilogy Save Editor</a></u></b> to give your Shepard these styles manually.<br>
+                                        Be extra careful reading the instructions for these mods.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <!-- Panel 1 -->
+                    <section id="me1" class="panel" data-index="1">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>ME1</h3>
+                            <div class="caret">▾</div>
+                        </header>
+                        
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                A light sprinkling of flavor for a glass that is threatening to shatter if you look at it funny.
+                            </p>
+                            
+                            <div id="unc-morality" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1394" target="_blank">UNC Morality</a></u></b></h4>
+                                <p class="text-standard">
+                                    Allows you to play both missions that are gated behind a high paragon/renegade score.
+                                </p>
+                            </div>
+                            
+                            <div id="da-o" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1560" target="_blank">LE1 Definitive Audio Overhaul</a></u></b></h4>
+                                <p class="text-standard">
+                                    Overhauls a ton of sounds by using those of later games.
+                                </p>
+                            </div>
+                            
+                            <div id="re-p" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/532" target="_blank">Replenish Grenades LE1</a></u></b></h4>
+                                <p class="text-standard">
+                                    Allows you to replenish your grenades from a locker on the Normandy.
+                                </p>
+                            </div>
+                            
+                            <div id="qu-ick" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1026" target="_blank">Quick Loot (LE1)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Prevents the recovered items menu from appearing when looting.
+                                </p>
+                            </div>
+                            
+                            <div id="les-s" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/822" target="_blank">Less Intense Vigil</a></u></b></h4>
+                                <p class="text-standard">
+                                    Reduces the visual intensity of Vigil for those sensitive to flashing lights.
+                                </p>
+                            </div>
+                            
+                            <div id="mor-n" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://next.nexusmods.com/profile/MorningAngel/mods?gameId=3712" target="_blank">MorningAngel</a></u></b></h4><h4>&</h4><h4><b><u><a href="https://next.nexusmods.com/profile/clericofshadows/mods?gameId=3712" target="_blank"> ClericOfShadows</a></u></b></h4>
+                                <p class="text-standard">
+                                    For all your custom Shepard and Armor needs let me direct you to the profiles of MorningAngel and ClericOfShadows who have done outstanding work there.
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <!-- Panel 2 -->
+                    <section id="me2" class="panel" data-index="2">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>ME2</h3>
+                            <div class="caret">▾</div>
+                        </header>
+                        
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                Garnish for what many call their favorite. Which is good because the recipe list reads like a word search.
+                            </p>
+                            
+                            <div id="dog-tag" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2615" target="_blank">Dogtag Tracker</a></u></b></h4>
+                                <p class="text-standard">
+                                    Adds a distance tracker to the Normandy Crash Site DLC.
+                                </p>
+                            </div>
+                            
+                            <div id="kol-yat" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1701" target="_blank">Skip Kolyat Trailing Section</a></u></b></h4>
+                                <p class="text-standard">
+                                    Skips the trailing section of Thane’s loyalty mission.<br>
+                                    <b>Note</b>: This is more of a mod for repeat playthroughs.
+                                </p>
+                            </div>
+                            
+                            <div id="jac-ob" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1035" target="_blank">Jacob Respects Thane and Tali</a></u></b></h4>
+                                <p class="text-standard">
+                                    Removes lines from Jacob that could be construed as hostile towards Thane and Tali.
+                                </p>
+                            </div>
+                            
+							<div id="shep-more" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/187" target="_blank">EGM Armors for LE2</a></u></b></h4>
+                                <p class="text-standard">
+                                    Even more armors! Backported from EGM or Ark Mod.
+                                </p>
+                            </div>
+							
+                            <div id="no-head" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/377" target="_blank">No Headgear for Squadmates</a></u></b></h4>
+                                <p class="text-standard">
+                                    Removes the headgear for your squadmates Alternate Appearance Pack armors.<br>
+                                    <b>Note</b>: This mod has an optional texture file to reflect the changes in the squad selection screen. If you plan to texture mod your game later, grab this file.<br>
+									<b>Note</b>: If you've been following along closely or went the batch route you need to reinstall Casual Hubs for the relevant patch.
+                                </p>
+                            </div>
+                            
+                            <div id="hair-mo3" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1498" target="_blank">Halcyon Hairpack (LE2)</a></u></b></h4>
+                                <p class="text-standard">
+                                    New hairstyles based on designs from the Outer Worlds.<br>
+                                    <b>Note</b>: This mod requires you to use the Trilogy Save Editor!
+                                </p>
+                            </div>
+                            
+                            <div id="mor-n" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://next.nexusmods.com/profile/MorningAngel/mods?gameId=3712" target="_blank">MorningAngel</a></u></b></h4><h4>&</h4><h4><b><u><a href="https://next.nexusmods.com/profile/clericofshadows/mods?gameId=3712" target="_blank"> ClericOfShadows</a></u></b></h4>
+                                <p class="text-standard">
+                                    For all your custom Shepard and Armor needs let me direct you to the profiles of MorningAngel and ClericOfShadows who have done outstanding work there.
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <!-- Panel 3 -->
+                    <section id="me3" class="panel" data-index="3">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>ME3</h3>
+                            <div class="caret">▾</div>
+                        </header>
+                        
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                I am running out of metaphors here guys. It's more food in your meal.
+                            </p>
+                            
+                            <div id="bak-ara" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1600" target="_blank">Bakara's Gift</a></u></b></h4>
+                                <p class="text-standard">
+                                    Places the crystal Bakara gives you in your cabin.
+                                </p>
+                            </div>
+                            
+                            <div id="shep-more" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/187" target="_blank">EGM Armors for LE3</a></u></b></h4>
+                                <p class="text-standard">
+                                    Even more armors! Backported from EGM or Ark Mod.
+                                </p>
+                            </div>
+                            
+                            <div id="hair-mo4" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1499" target="_blank">Halcyon Hairpack (LE3)</a></u></b></h4>
+                                <p class="text-standard">
+                                    New hairstyles based on designs from the Outer Worlds.<br>
+                                    <b>Note</b>: This mod requires you to use the Trilogy Save Editor!
+                                </p>
+                            </div>
+                            
+                            <div id="mor-n" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://next.nexusmods.com/profile/MorningAngel/mods?gameId=3712" target="_blank">MorningAngel</a></u></b></h4><h4>&</h4><h4><b><u><a href="https://next.nexusmods.com/profile/clericofshadows/mods?gameId=3712" target="_blank"> ClericOfShadows</a></u></b></h4>
+                                <p class="text-standard">
+                                    For all your custom Shepard and Armor needs let me direct you to the profiles of MorningAngel and ClericOfShadows who have done outstanding work there.
+                                </p>
+                            </div>
+                            
+                            <div id="shep-v" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/850" target="_blank">FemShep v BroShep - Duel of Your Shepards</a></u></b></h4>
+                                <p class="text-standard">
+                                    Allows you to fully customize the look of your Citadel clone.<br>
+                                    <b>Note</b>: There is a guide on the Nexus page on how to properly use this mod.
+                                </p>
+                            </div>
+                            
+                            <div id="kai-kai" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1424" target="_blank">Kaidan Alenko Overhaul (LE3)</a></u></b></h4>
+                                <p class="text-standard">
+                                    A new look for Kaidan including some new outfits.
+                                </p>
+                            </div>
+                            
+                            <div id="kai-arm" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2234" target="_blank">Kaidan Alenko's Guardian Armory (LE3)</a></u></b></h4>
+                                <p class="text-standard">
+                                    New armors for Kaidan based on designs from Destiny 2.
+                                </p>
+                            </div>
+                            
+                            <div id="ash-bash" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1209" target="_blank">Ashley Consistency Project</a></u></b></h4>
+                                <p class="text-standard">
+                                    Brings Ashley's LE1 look to LE3.<br>
+                                    <b>Note</b>: If you use EGM make sure to check your settings and use the same outfit.
+                                </p>
+                            </div>
+                            
+                            <div id="ash-arm" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2233" target="_blank">Ashley Williams's Guardian Armory (LE3)</a></u></b></h4>
+                                <p class="text-standard">
+                                    New armors for Ashley based on designs from Destiny 2.
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                </article>
+                
+                <!-- Pager -->
+                <div class="pager-box pager" role="navigation" aria-label="Panel navigation">
+                    <div class="pager-left">
+                        <button class="btn text-standard" id="expandAllBtn" aria-label="Expand all panels">Expand All</button>
+                        <button class="btn text-standard" id="closeAllBtn" aria-label="Close all panels">Close All</button>
+                    </div>
+
+                    <div class="pager-right">
+                        <button class="btn text-standard" id="prevPageBtn" aria-label="Previous page">Prev Page</button>
+                        <button class="btn text-standard" id="nextPageBtn" aria-label="Next page">Next Page</button>
+                    </div>
+                </div>
+
+                <div class="bottom-strip" aria-hidden="true"></div>
+            </div>
+        </main>
+
+        <!-- RIGHT -->
+        <aside class="right-panel">
+            <div class="contents-panel" role="navigation" aria-label="Contents">
+                <h4>Content</h4>
+                <nav>
+                    <ul id="contentsList" class="contents-list"></ul>
+                </nav>
+            </div>
+
+            <div class="made-by" role="contentinfo">
+                Made with <span class="heart">♥</span> by <span class="name"><a href="https://varkorax.github.io" target="_blank">Varkorax</a></span>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="./custom/js/guide.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('fontToggle');
+        const key = 'accessibleFonts';
+        const enabled = localStorage.getItem(key) === 'true';
+
+        if (enabled) document.body.classList.add('accessible-fonts');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('accessible-fonts');
+            localStorage.setItem(key, document.body.classList.contains('accessible-fonts'));
+        });
+        
+    });
+    </script>
+
+</body>
+</html>

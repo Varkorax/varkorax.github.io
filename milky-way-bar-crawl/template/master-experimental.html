@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Ambient Background Loop</title>
+  <style>
+    #muteBtn {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      padding: 6px 10px;
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.9);
+      cursor: pointer;
+      z-index: 9999;
+    }
+    iframe {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      left: -9999px;
+      top: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="muteBtn">Unmute</button>
+  <div id="ytplayer"></div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    const VIDEO_ID = 'Do1WOIBPmcA'; // replace with your ambient track
+    let player, isMuted = true;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+        videoId: VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          loop: 1,
+          playlist: VIDEO_ID, // required for YouTube to actually loop
+          modestbranding: 1,
+          iv_load_policy: 3,
+          rel: 0
+        },
+        events: {
+          onReady: e => {
+            player.mute();
+            player.playVideo();
+          }
+        }
+      });
+    }
+
+    document.getElementById('muteBtn').addEventListener('click', () => {
+      isMuted = !isMuted;
+      if (isMuted) {
+        player.mute();
+        document.getElementById('muteBtn').innerText = 'Unmute';
+      } else {
+        player.unMute();
+        document.getElementById('muteBtn').innerText = 'Mute';
+      }
+    });
+  </script>
+</body>
+</html>

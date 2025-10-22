@@ -1,333 +1,155 @@
-<!-- File: index.html -->
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="robots" content="noai, noimageai, noindex, nofollow" />
-        
-        <title>| Welcome</title>
-        <link rel="shortcut icon" type="image/x-icon" data-link="custom/favicon.ico" />
-        
-        <link rel="stylesheet" href="custom/css/global.css" />
-        <link rel="stylesheet" href="custom/css/writing.css" />
-        <!-- Manual Override To See If It Looks Better During The Day -->
-        <style>
-            .content h1, h2, p {
-                color: #ffffff !important;
-            }
-
-            /* Latest Story box layout */
-            .latest-box {
-                display: flex;
-                align-items: flex-start;
-                gap: 1rem;
-                padding: 1rem;
-                border-radius: 1rem;
-                background: rgba(0,0,0,0.1);
-                backdrop-filter: blur(6px);
-				width: 600px;
-            }
-
-            .latest-thumb {
-                width: 160px;
-                height: auto;
-                border-radius: 0.75rem;
-                flex-shrink: 0;
-				outline: orange solid 2px;
-            }
-
-            .latest-text {
-                flex: 1;
-            }
-
-            .latest-title {
-                font-size: 1.25rem;
-                font-weight: bold;
-                margin: 0;
-            }
-
-            .latest-date {
-                font-style: italic;
-                font-size: 0.9rem;
-                margin: 0.25rem 0 0.75rem;
-                opacity: 0.8;
-            }
-
-            .latest-blurb {
-                margin-bottom: 1rem;
-            }
-
-            .latest-btn {
-                display: inline-block;
-                padding: 0.5rem 1rem;
-                border-radius: 0.5rem;
-                text-decoration: none;
-                background: #4a90e2;
-                color: #fff;
-                font-weight: bold;
-                transition: background 0.2s ease;
-            }
-
-            .latest-btn:hover {
-                background: #357ab8;
-            }
-        </style>
-    </head>
-
-    <body>
-        <!-- Changing Background -->
-        <div id="background">
-            <div class="bg-layer" id="bg1"></div>
-            <div class="bg-layer" id="bg2"></div>
-        </div>
-
-        <!-- Top-left navigation -->
-        <nav id="topbar" aria-label="Primary">
-            <button class="topbar-btn" aria-current="page" aria-label="Home" disabled>
-                <img src="custom/img/side-home.png" alt="Home" />
-            </button>
-
-            <div class="topbar-sep" aria-hidden="true"></div>
-
-            <a data-link="/pages/landing_stories.html" class="topbar-btn" data-tooltip="Writing" aria-label="Writing">
-                <img data-src="/custom/img/side-quill.png" alt="Stories" />
-            </a>
-
-            <div class="topbar-sep" aria-hidden="true"></div>
-
-            <a data-link="/pages/landing_games.html" class="topbar-btn" data-tooltip="Projects" aria-label="Projects">
-                <img data-src="/custom/img/side-game.png" alt="Games" />
-            </a>
-
-            <div class="topbar-sep" aria-hidden="true"></div>
-
-            <a data-link="/pages/landing_socials.html" class="topbar-btn" data-tooltip="Socials" aria-label="Socials">
-                <img data-src="/custom/img/side-social.png" alt="Socials" />
-            </a>
-        </nav>
-
-        <!-- Main content -->
-        <main class="content" id="main-content">
-            <div class="readable-panel">
-                <h1>Welcome!</h1>
-                <p>I set this place up to share my thoughts and air out the creative miasma in my head.</p>
-                <p>This includes stories, projects and some other small experiments.</p>
-				<p>So take a look around and I am sure you will find something to waste a bit of time with.</p>
-            </div>
-            
-            <div class="readable-panel buttons-panel" style="margin-top: 18px;">
-                <div class="button-container" role="list">
-                    <div role="listitem">
-                        <h2>Latest Thing:</h2>
-                        <div id="latest-story"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        
-        <!-- Infobar (top-right) -->
-        <nav id="infobar" aria-label="Site utilities">
-            <!-- Notifications (bell) — opens notifications modal -->
-            <button
-                id="notif-toggle"
-                class="infobar-btn"
-                aria-expanded="false"
-                aria-controls="notif-popup"
-                data-tooltip="Notifications"
-                title="Notifications"
-                >
-                <img src="/custom/img/bottom-bell.png" alt="Notifications" id="notif-icon" />
-            </button>
-            
-            <div class="infobar-sep" aria-hidden="true"></div>
-            
-            <!-- Settings button (moved to the right of the bell) -->
-            <button
-                id="settings-toggle"
-                class="infobar-btn"
-                aria-expanded="false"
-                aria-controls="settings-popup"
-                data-tooltip="Settings"
-                title="Settings"
-                >
-                <img data-src="/custom/img/bottom-gear.png" alt="Settings" id="settings-icon" />
-            </button>
-
-            <button
-                id="info-toggle"
-                class="infobar-btn"
-                aria-expanded="false"
-                aria-controls="info-popup"
-                data-tooltip="Info"
-                title="Info"
-                >
-                <img data-src="/custom/img/bottom-info.png" alt="Info" id="info-icon" />
-            </button>
-        </nav>
-        
-        <!-- NOTIFICATIONS POPUP (inlined) -->
-        <div id="notif-popup" class="popup" role="dialog" aria-hidden="true" aria-label="Notifications panel" aria-modal="true">
-            <div class="popup-inner">
-                <button class="popup-start visually-hidden" aria-label="Start of notifications dialog">Start notifications</button>
-                <button class="popup-close" aria-label="Close notifications panel">✕</button>
-
-                <div class="popup-content">
-                    <!-- IFRAME: notifications page -->
-                    <iframe
-                        src="./pages/notifications.html"
-                        title="Notifications"
-                        style="display:block; width:100%; height:100%; min-height:320px; border:0;"
-                        allow="clipboard-read; clipboard-write; geolocation; microphone; camera; autoplay"
-                        ></iframe>
-
-                    <noscript>
-                        <div class="content small">
-                            <p>JavaScript is required to load the notifications panel. <a class="bare-link" href="./pages/notifications.html">Open notifications</a></p>
-                        </div>
-                    </noscript>
-                </div>
-
-                <p class="popup-help">To close, click outside the window or press Escape.</p>
-            </div>
-        </div>
-        
-        <!-- SETTINGS POPUP (inlined) -->
-        <div id="settings-popup" class="popup" role="dialog" aria-hidden="true" aria-label="Settings panel" aria-modal="true">
-            <div class="popup-inner">
-                <button class="popup-start visually-hidden" aria-label="Start of settings dialog">Start settings</button>
-                <button class="popup-close" aria-label="Close settings panel">✕</button>
-
-                <div class="popup-content">
-                    <!-- IFRAME: settings page -->
-                    <iframe
-                        src="./pages/settings.html"
-                        title="Settings"
-                        style="display:block; width:100%; height:100%; min-height:320px; border:0;"
-                        allow="clipboard-read; clipboard-write; geolocation; microphone; camera; autoplay"
-                        ></iframe>
-
-                    <noscript>
-                        <div class="content small">
-                            <p>JavaScript is required to load the settings panel. <a class="bare-link" href="./pages/settings.html">Open settings</a></p>
-                        </div>
-                    </noscript>
-                </div>
-
-                <p class="popup-help">To close, click outside the window or press Escape.</p>
-            </div>
-        </div>
-
-        <!-- INFO POPUP (inlined) -->
-        <div id="info-popup" class="popup" role="dialog" aria-hidden="true" aria-label="Info panel" aria-modal="true">
-            <div class="popup-inner">
-                <button class="popup-start visually-hidden" aria-label="Start of info dialog">Start info</button>
-                <button class="popup-close" aria-label="Close info panel">✕</button>
-
-                <div class="popup-content">
-                    <!-- IFRAME: info page -->
-                    <iframe
-                        src="./pages/info.html"
-                        title="Info"
-                        style="display:block; width:100%; height:100%; min-height:320px; border:0;"
-                        allow="clipboard-read; clipboard-write; geolocation; microphone; camera; autoplay"
-                        ></iframe>
-
-                    <noscript>
-                        <div class="content small">
-                            <p>JavaScript is required to load the info panel. <a class="bare-link" href="./pages/info.html">Open info</a></p>
-                        </div>
-                    </noscript>
-                </div>
-
-                <p class="popup-help">To close, click outside the window or press Escape.</p>
-            </div>
-        </div>
-        
-        <!-- Mature content overlay + modal -->
-        <div id="mature-overlay" aria-hidden="true"></div>
-
-        <!-- invisible toggle used to open the modal via openPopup(popup, toggle) -->
-        <button id="mature-toggle" class="visually-hidden" aria-controls="mature-modal" aria-expanded="false">Open mature notice</button>
-
-        <div id="mature-modal" class="popup" role="dialog" aria-label="Mature content notice" aria-hidden="true" aria-modal="true">
-          <div class="popup-inner">
-            <button class="popup-start visually-hidden" aria-label="Start mature dialog">Start mature dialog</button>
-
-            <div class="popup-content">
-              <div class="content" role="document" style="padding: 6px 6px 0 6px;">
-                <h2 style="margin:0 0 8px 0;">Heads up!</h2>
-
-                <p style="margin:0 0 12px 0; line-height:1.5;">
-                  Annoying though it may be I have the obligation to give you the following disclaimer:<br><br>
-                  
-                  This site contains writing that may deal with mature themes such as:<br>
-                  adult language,<br>
-                  violence,<br>
-                  complex relationships,<br>
-                  or suggestive material.<br><br>
-                  
-                  It is not an adult entertainment site, but some stories may be unsuitable for minors.<br>
-                  By entering you confirm you are of legal age in your jurisdiction.
-                </p>
-
-                <div style="margin-top:8px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-                  <label style="display:flex; align-items:center; gap:8px; font-size:0.95rem; cursor:pointer;">
-                    <input type="checkbox" id="mature-remember" />
-                    <span>Remember my choice on this device</span>
-                  </label>
-                </div>
-
-                <div style="margin-top:14px; display:flex; gap:10px; align-items:center;">
-                  <button id="mature-enter-btn" class="settings-btn" style="font-weight:700; min-width:130px;">Enter site</button>
-                  <button id="mature-exit-btn" class="settings-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.08); min-width:100px;">Exit</button>
-                </div>
-
-                <p style="margin-top:12px; font-size:0.88rem; opacity:0.92;">
-                  If you'd rather not see mature content, click <strong>Exit</strong> to leave the site.
-                </p>
-              </div>
-            </div>
-
-            <p class="popup-help" style="margin-top:8px; padding-top:0;">Use the buttons above to continue.</p>
-          </div>
-        </div>
-        
-        <!-- Toast container -->
-        <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
-        
-        <!-- Global JS -->
-        <script src="custom/js/global.js" defer></script>
-        
-        <!-- Local wiring: Most recent story -->
-        <script>
-            async function loadLatestStory() {
-                const res = await fetch("/pages/stories/stories.json");
-                const data = await res.json();
-                
-                // Flatten all stories from every category into one array
-                const allStories = Object.values(data).flat();
-                
-                // Sort descending by date
-                allStories.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                const latest = allStories[0];
-                
-                document.getElementById("latest-story").innerHTML = `
-                  <div class="latest-box">
-                    <img src="./pages/${latest.thumb}" alt="${latest.title} thumbnail" class="latest-thumb">
-                    <div class="latest-text">
-                      <h2 class="latest-title">${latest.title}</h2>
-                      <p class="latest-date">${latest.date}</p>
-                      <p class="latest-blurb">${latest.blurb}</p>
-                      <a href="pages/stories/stories.html?story=${latest.slug}" class="story-btn">Read →</a>
-                    </div>
-                  </div>
-                `;
-            }
-            
-            loadLatestStory();
-        </script>
 		
-    </body>
+		<title>| Project Hub</title>
+        <link rel="shortcut icon" type="image/x-icon" href="./custom/favicon.svg" />
+		
+		<link rel="stylesheet" href="./custom/css/global.css" />
+	</head>
+	<body>
+		<div id="crt" class="pixel-sharp" role="application" aria-label="Varkorax project hub">
+			<div class="layout">
+				<div class="header pixel-sharp" aria-hidden="false">
+					<div style="display:flex;align-items:center;gap:10px;">
+						<div id="varkorax">Varkorax</div><div id="cursor" aria-hidden="true">_</div>
+					</div>
+					<div class="subtitle pixel-sharp">Project Hub</div>
+				</div>
+				
+				<div class="projects" id="projects">
+					<div class="recent-label">Recent Projects</div>
+					
+					<div class="nav-arrow nav-top" id="navUp" title="Previous project" aria-label="Previous project">▲</div>
+					
+					<!-- Project entries -->
+					<!--
+						The box in the windows next to the title - fill it with favicon? -->
+					<div class="project pixel-sharp" tabindex="0" data-key="my-site">
+						<div class="proj-counter">1/3</div>
+						<div class="proj-click">CLICK ME!</div>
+						
+						<div class="thumb" style="background-image:url('custom/img/prj1.png');"></div>
+						<div>
+							<div class="project-title">My Site</div>
+							<div class="meta">Personal website</div>
+						</div>
+						<div class="gutter"></div>
+
+						<div class="expanded win-vertical" role="dialog" aria-hidden="true" data-owner="my-site">
+							<div class="titlebar">
+								<div class="t-left"><span class="title-icon"></span><span style="margin-left:6px">My Site</span></div>
+								<div class="t-right"><button class="btn-close" title="Close window" aria-label="Close">✕</button></div>
+							</div>
+							<div class="win-shell">
+								<div class="win-content">Personal website — a small portfolio and notes.
+									<div style="margin-top:10px; display:flex; gap:8px; align-items:center;">
+										<button class="open-btn" data-owner-open="my-site">OPEN</button>
+									</div>
+									<p style="margin-top:8px; font-size:12px; color:rgba(255,186,96,0.75)">Opens <code>my-site/index.html</code> in a new tab. Press ESC to close.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="project pixel-sharp" tabindex="0" data-key="milky-way-bar-crawl">
+						<div class="proj-counter">2/3</div>
+						<div class="proj-click">CLICK ME!</div>
+						
+						<div class="thumb" style="background-image:url('custom/img/prj2.png');"></div>
+						<div>
+							<div class="project-title">Milky Way Bar Crawl</div>
+							<div class="meta">Mass Effect Legendary Edition mod list</div>
+						</div>
+						<div class="gutter"></div>
+
+						<div class="expanded win-vertical" role="dialog" aria-hidden="true" data-owner="milky-way-bar-crawl">
+							<div class="titlebar">
+								<div class="t-left"><span class="title-icon"></span><span style="margin-left:6px">Milky Way Bar Crawl</span></div>
+								<div class="t-right"><button class="btn-close" title="Close" aria-label="Close">✕</button></div>
+							</div>
+							<div class="win-shell">
+								<div class="win-content">A curated mod list for Mass Effect Legendary Edition focused on visuals and immersion.
+									<div style="margin-top:10px; display:flex; gap:8px; align-items:center;">
+										<button class="open-btn" data-owner-open="milky-way-bar-crawl">OPEN</button>
+									</div>
+									<p style="margin-top:8px; font-size:11px; color:rgba(255,186,96,0.75)">Opens <code>milky-way-bar-crawl/index.html</code> in a new tab. Press ESC to close.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="project pixel-sharp" tabindex="0" data-key="unknown-project">
+						<div class="proj-counter">3/3</div>
+						<div class="proj-click">CLICK ME!</div>
+						
+						<div class="thumb" style="background-image:url('custom/img/prjunknown.png');"></div>
+						<div>
+							<div class="project-title">??????</div>
+							<div class="meta">Unknown</div>
+						</div>
+						<div class="gutter"></div>
+
+						<div class="expanded win-vertical" role="dialog" aria-hidden="true" data-owner="unknown-project">
+							<div class="titlebar">
+								<div class="t-left"><span class="title-icon"></span><span style="margin-left:6px">??????</span></div>
+								<div class="t-right"><button class="btn-close" title="Close" aria-label="Close">✕</button></div>
+							</div>
+							<div class="win-shell">
+								<div class="win-content">Mystery project — details unknown.
+									<div style="margin-top:10px; display:flex; gap:8px; align-items:center;">
+										<!-- intentionally no data-owner-open attribute: open button leads nowhere -->
+										<button class="open-btn" aria-disabled="true">OPEN</button>
+									</div>
+									<p style="margin-top:8px; font-size:11px; color:rgba(255,186,96,0.75)">No page configured.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="nav-arrow nav-bottom" id="navDown" title="Next project" aria-label="Next project">▼</div>
+				</div>
+			</div>
+
+			<canvas id="rain" width="1600" height="900" aria-hidden="true"></canvas>
+			<div id="scanlines" aria-hidden="true"></div>
+			
+			<div class="tip-text">Tip: you can drag the windows</div>
+			
+			<!-- dashed line near bottom (this will sit under windows) -->
+			<div class="bottom-dashes" aria-hidden="true">- - - - - - - - -</div>
+			
+			<!-- buttons BELOW the dashed line (separate, above windows so always visible) -->
+			<div class="buttons-below-dashes" role="group" aria-label="Footer buttons">
+				<button class="footer-btn" id="blueskyBtn" title="Follow Me On Bluesky" data-tooltip="Bluesky">
+					<img src="custom/img/side-social-bsky.png" alt="Bluesky" />
+				</button>
+				<button class="footer-btn" id="creditsBtn" data-owner-open="credits">Credits</button>
+				<button class="footer-btn" id="projectsWheelBtn">All Projects</button>
+			</div>
+
+			<!-- All-projects box (toggle) -->
+			<div class="expanded win-vertical" id="allProjects" style="display:none;" aria-hidden="true" data-owner="allProjects">
+				<div class="titlebar" style="border-bottom:2px solid rgba(0,0,0,0.18); display:flex; justify-content:space-between; align-items:center; padding:0 8px;">
+					<div class="t-left"><span class="title-icon"></span><span style="margin-left:8px">All Projects</span></div>
+					<div class="t-right"><button class="btn-close" id="closeAllProjects">✕</button></div>
+				</div>
+				<div class="win-shell">
+					<div class="win-content">
+						<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+							<strong>All Projects</strong>
+						</div>
+						<div style="display:flex;flex-direction:column;gap:8px;">
+							<div id="allProjectsList"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="./custom/js/global.js" defer></script>
+	</body>
 </html>

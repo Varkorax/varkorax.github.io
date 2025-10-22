@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Milky Way Bar Crawl — Intro</title>
+<link rel="shortcut icon" href="./custom/favicon.ico" />
+<style>
+  @font-face{font-family:'ZenDots';src:url('custom/fonts/ZenDots-Regular.ttf') format('truetype');}
+  :root{
+    --left-w:260px; --right-w:260px; --center-w:820px;
+    --title-h:84px; --pager-h:66px; --gutter:14px;
+    --glass-bg: rgba(255,255,255,0.03);
+    --glass-border: rgba(255,255,255,0.06);
+    --accent: 60,130,220;
+    --muted:#b7cfe9;
+    --scrollbar-bg: rgba(40,70,140,0.08);
+    --bg-fallback: #071021; /* dark fallback color */
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:'ZenDots',system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:#eaf6ff;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+
+  /* Single background layer — visible even if JS doesn't run */
+  .bg-viewport{position:fixed;inset:0;z-index:-4;overflow:hidden;pointer-events:none}
+  .bg-layer{position:absolute;inset:0;background-position:center center;background-size:cover;opacity:1;filter:blur(2px);transition:filter 400ms ease, transform 600ms linear;}
+  .bg-vignette{position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle,rgba(0,0,0,0)68%,rgba(0,0,0,0.86)100%)}
+
+  /* Layout */
+  .layout{position:relative;height:100vh;display:grid;grid-template-columns:var(--left-w) minmax(calc(var(--center-w)),1fr) var(--right-w);gap:var(--gutter);padding:calc(var(--gutter)*1.6);align-items:stretch}
+
+  /* LEFT */
+  .left-panel{background:var(--glass-bg);backdrop-filter:blur(9px) saturate(115%);border-radius:12px;border:1px solid var(--glass-border);padding:12px;box-shadow:0 10px 34px rgba(0,0,0,0.6);overflow:auto;height:calc(100vh - (var(--gutter)*3.2))}
+  .left-panel h3{margin:0 0 8px 0;font-size:1rem;color:#e9f6ff}
+  .chap-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+  /* each chap-item is block (so sub-list flows beneath it) */
+  .chap-item{display:block;border-radius:8px;overflow:hidden}
+  .chap-item > .chap-link, .chap-item > .parent-header{display:flex;align-items:center;gap:8px;padding:10px 12px;color:#dfefff;cursor:pointer}
+  .chap-item > .chap-link:hover, .chap-item > .parent-header:hover{background:rgba(var(--accent),0.04)}
+  /* stronger visible active state (accent bar + glow) */
+  .chap-item.active > .chap-link, .chap-item.active > .parent-header{
+    background: linear-gradient(90deg, rgba(var(--accent),0.25), rgba(var(--accent),0.12));
+    box-shadow: 0 0 28px rgba(var(--accent),0.18), 0 8px 28px rgba(0,0,0,0.6);
+    border-left: 4px solid rgba(var(--accent),0.95);
+    color:#ffffff; font-weight:600;
+  }
+  .chap-link{width:100%;display:block}
+  .chap-link.disabled{pointer-events:none;opacity:0.95;cursor:default}
+  .parent .tog{background:transparent;border:0;color:#cfeaff;cursor:pointer;font-size:0.95rem;padding:4px 6px;border-radius:6px}
+  .parent .label{flex:1;text-align:left;font-weight:300} /* decreased to 300 */
+
+  /* sublist slides and pushes content - smooth max-height */
+  .sub-list{list-style:none;margin:0;padding:6px 8px;max-height:0;overflow:hidden;transition:max-height 320ms cubic-bezier(.2,.9,.2,1)}
+  .sub-item{padding:8px 10px;border-radius:6px;color:#dbeeff}
+  .sub-item a{display:block;color:inherit}
+  .sub-item:hover{background:rgba(var(--accent),0.05)}
+  .parent.open>.sub-list{max-height:400px} /* adjust if you have longer lists */
+
+  /* CENTER */
+  .center-col{display:flex;flex-direction:column;align-items:center;gap:6px;height:100%}
+
+  /* Title attached */
+  .title-box{width:100%;height:var(--title-h);background:var(--glass-bg);backdrop-filter:blur(10px) saturate(120%);border:1px solid var(--glass-border);border-radius:12px;border-bottom-left-radius:0;border-bottom-right-radius:0;padding:12px 18px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 34px rgba(0,0,0,0.6);position:relative;overflow:hidden}
+  .title-box h1{margin:0;font-size:1.25rem;color:#f0f8ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;z-index:3}
+  .title-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(1.05);width:140%;height:240%;background-position:center center;background-size:cover;filter:blur(6px) saturate(120%);opacity:0.9;z-index:1;pointer-events:none}
+
+  /* Content box (no bottom radius to fit pager) */
+  .content-shell{width:100%;display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .content-box{background:var(--glass-bg);backdrop-filter:blur(10px) saturate(120%);border:1px solid var(--glass-border);border-top-left-radius:0;border-top-right-radius:0;border-bottom-left-radius:0;border-bottom-right-radius:0;padding:18px;max-height:calc(100vh - var(--title-h) - var(--pager-h) - (var(--gutter)*3));overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,0.62)}
+
+  /* Panels */
+  .panel{background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.10); border-radius:10px; margin:8px 0; overflow:hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.35)}
+  .panel + .panel{margin-top:10px}
+  .panel-header{padding:12px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .panel-header h3{margin:0;font-size:1rem;color:#eaf4ff}
+  .panel-body{padding:0 14px;max-height:0;overflow:hidden;transition:max-height 180ms ease,padding 160ms ease}
+  .panel.open .panel-body{max-height:1200px;padding:12px 14px 18px}
+
+  .caret{font-size:1.05rem;color:#cfe8ff}
+
+  .content-box h2{margin:0 0 10px 0;font-size:1.2rem;color:#eaf4ff}
+  .content-box p{margin:0 0 12px 0;color:#e6f3ff;line-height:1.6;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;font-size:0.98rem}
+
+  .anchor{display:block;padding-top:8px;margin-top:-8px}
+
+  /* media helper (image + text) */
+  .media{display:flex;gap:12px;align-items:flex-start}
+  .media img{width:180px;height:auto;border-radius:8px;flex:0 0 auto;border:1px solid rgba(255,255,255,0.06)}
+  .media .media-body{flex:1 1 auto}
+
+  /* hidden media (collapsible) */
+  .hidden-media{max-height:0;overflow:hidden;transition:max-height 300ms cubic-bezier(.2,.9,.2,1);}
+  .hidden-media.open{max-height:600px}
+
+  /* code styling: darker pill */
+  .content-box code{background:rgba(0,0,0,0.45);padding:2px 8px;border-radius:8px;color:#f8fbff;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:0.95rem}
+
+  /* warning box */
+  .warning{border:1px solid rgba(255,80,80,0.95);background:linear-gradient(180deg, rgba(255,80,80,0.11), rgba(255,80,80,0.1));padding:12px;border-radius:12px;display:flex;gap:10px;align-items:flex-start}
+  .warning .icon{width:36px;height:36px;border-radius:18px;border:2px solid rgba(255,80,80,0.95);display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+
+  /* scrollbar */
+  .content-box::-webkit-scrollbar{width:12px;background:transparent}
+  .content-box::-webkit-scrollbar-track{background:var(--scrollbar-bg);border-radius:8px}
+  .content-box::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(60,130,220,0.85),rgba(60,130,220,0.65));border-radius:8px;box-shadow:inset 0 0 6px rgba(0,0,0,0.45)}
+  .content-box{scrollbar-width:thin;scrollbar-color: rgba(60,130,220,0.85) var(--scrollbar-bg)}
+
+  /* Pager (rewritten: left = expand/close all, right = prev/next page) */
+  .pager-box{width:100%;height:var(--pager-h);background:var(--glass-bg);backdrop-filter:blur(10px) saturate(120%);border:1px solid var(--glass-border);border-top-left-radius:0;border-top-right-radius:0;border-bottom-left-radius:12px;border-bottom-right-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 32px rgba(0,0,0,0.6)}
+  .pager-left{display:flex;align-items:center;gap:10px}
+  .pager-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .pager .btn{background:rgba(10,30,90,0.94);color:var(--muted);border:1px solid rgba(8,26,80,0.9);padding:10px 12px;border-radius:8px;text-transform:uppercase;cursor:pointer;transition:all 200ms}
+  .pager .btn:hover{background:rgba(60,130,220,0.92);color:#eaf6ff;box-shadow:0 0 18px rgba(var(--accent),0.06)}
+  .pager .btn.disabled{opacity:0.45;cursor:not-allowed;box-shadow:none}
+  
+  #toggleTextureImgBtn{background:rgba(10,30,90,0.94);color:var(--muted);border:1px solid rgba(8,26,80,0.9);padding:10px 12px;border-radius:8px;text-transform:uppercase;cursor:pointer;transition:all 200ms}
+  #toggleTextureImgBtn:hover{background:rgba(60,130,220,0.92);color:#eaf6ff;box-shadow:0 0 18px rgba(var(--accent),0.06)}
+  #toggleTextureImgBtn.disabled{opacity:0.45;cursor:not-allowed;box-shadow:none}
+
+  /* RIGHT */
+  .right-panel{display:flex;flex-direction:column;gap:12px;height:calc(100vh - (var(--gutter)*3.2))}
+  .contents-panel{background:var(--glass-bg);backdrop-filter:blur(9px) saturate(115%);border-radius:12px;border:1px solid var(--glass-border);padding:12px;box-shadow:0 10px 34px rgba(0,0,0,0.6);overflow:auto;flex:1 1 auto}
+  .contents-panel h4{margin:0 0 8px 0;color:#e9f6ff}
+  .contents-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .contents-list>li>a{display:block;padding:8px 10px;border-radius:8px;color:#dfefff}
+  .contents-list a:hover{background:rgba(var(--accent),0.04)}
+  .contents-list a.active{background:rgba(var(--accent),0.16);box-shadow:0 6px 18px rgba(0,0,0,0.48)}
+
+  .contents-sublist{list-style:none;margin:6px 0 0 8px;padding:0;display:flex;flex-direction:column;gap:4px}
+  .contents-sublist a{display:block;padding:6px 8px;border-radius:6px;font-size:0.95rem;color:#dbeeff}
+  .contents-sublist a:hover{background:rgba(var(--accent),0.03)}
+  /* active state for sublinks */
+  .contents-sublist a.active{background:rgba(var(--accent),0.15);color:#fff;font-weight:600}
+
+  .made-by{background:var(--glass-bg);backdrop-filter:blur(9px) saturate(115%);border-radius:12px;border:1px solid var(--glass-border);padding:8px 12px;box-shadow:0 8px 26px rgba(0,0,0,0.55);text-align:center;color:#fff}
+  .made-by .heart,.made-by .name{color:#ff984a;display:inline-block;animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{0%{transform:scale(1)}45%{transform:scale(1.03)}100%{transform:scale(1)}}
+
+  @media (max-width:1000px){
+    .layout{grid-template-columns:1fr;grid-auto-rows:auto;padding:12px;gap:12px}
+    .left-panel,.right-panel{order:2;height:auto;max-height:40vh}
+    .center-col{order:1}
+    .title-box{height:72px}
+    .content-box{max-height:calc(60vh)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .bg-layer,.made-by .heart{transition:none!important;animation:none!important}
+    .sub-list,.panel-body{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Background (single reliable layer) -->
+  <div class="bg-viewport" aria-hidden="true">
+    <div id="bgLayer" class="bg-layer" style="background-image:url('./custom/img/title-candidate3.jpg');"></div>
+  </div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+
+  <div class="layout" id="layoutRoot">
+
+    <!-- LEFT -->
+    <aside class="left-panel" id="leftPanel" role="navigation" aria-label="Chapters">
+      <h3>Chapters</h3>
+      <ul class="chap-list" id="chapList">
+        <li class="chap-item" data-href="intro.html">
+          <a class="chap-link" href="intro.html">1. Introduction</a>
+        </li>
+
+        <li class="chap-item" data-href="setup.html">
+          <a class="chap-link" href="setup.html">2. Setup &amp; Tools</a>
+        </li>
+
+        <!-- Mod List is a vertical collapsible parent. Starts open. -->
+        <li class="chap-item parent open" id="modListParent" aria-expanded="true">
+          <div class="parent-header" role="button" tabindex="0" aria-expanded="true">
+            <button class="tog" aria-hidden="true">▾</button>
+            <span class="label">3. Mod List</span>
+          </div>
+          <ul class="sub-list" role="menu" aria-label="Mod List subchapters">
+            <li class="sub-item" role="none"><a role="menuitem" href="me1.html">ME1</a></li>
+            <li class="sub-item" role="none"><a role="menuitem" href="me2.html">ME2</a></li>
+            <li class="sub-item" role="none"><a role="menuitem" href="me3.html">ME3</a></li>
+          </ul>
+        </li>
+
+        <li class="chap-item" data-href="conclusion.html">
+          <a class="chap-link" href="conclusion.html">4. Conclusion</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- CENTER -->
+    <main class="center-col" role="main">
+      <div class="content-shell" id="contentShell">
+
+        <div class="title-box">
+          <div id="titleBackground" class="title-bg" style="background-image:url('./custom/img/title-candidate3.jpg');"></div>
+          <h1 id="projectTitle">Milky Way Bar Crawl</h1>
+        </div>
+
+        <article class="content-box" id="contentBox" tabindex="0" aria-labelledby="stepTitle">
+
+          <!-- Panels (first open) -->
+          <section id="preamble" class="panel open" data-index="0">
+            <header class="panel-header" role="button" aria-expanded="true">
+              <h3>Preamble</h3><div class="caret">▾</div>
+            </header>
+            <div class="panel-body">
+              <div class="media">
+                <img src="https://picsum.photos/420/280" alt="placeholder" />
+                <div class="media-body">
+                  <p>Welcome to the Milky Way Bar Crawl. This guide walks you through modding the Legendary Edition step by step. It's friendly but detailed — we won't assume you already know everything about your file system.</p>
+                  <p>When instructions reference folders, use <code>bold for paths</code> and <code>monospace for commands</code>. Keep backups and don't rush.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="requirements" class="panel" data-index="1">
+            <header class="panel-header" role="button" aria-expanded="false">
+              <h3>Requirements</h3><div class="caret">▸</div>
+            </header>
+            <div class="panel-body">
+              <p>Before you begin, install the Legendary Edition, ensure you can run the game, and have a place to store backups.</p>
+
+              <div id="requirements-system" class="anchor" data-parent="requirements"><h4>System</h4><p>Minimum system info and VRAM notes.</p></div>
+              <div id="requirements-space" class="anchor" data-parent="requirements"><h4>Space</h4><p>Disk usage and backup storage suggestions.</p></div>
+            </div>
+          </section>
+
+          <section id="terminology" class="panel" data-index="2">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Terminology</h3><div class="caret">▸</div></header>
+            <div class="panel-body"><p><strong>Mod Manager:</strong> tool to install, uninstall, and manage load order. <strong>Load Order:</strong> the sequence mods are applied. <strong>INI:</strong> configuration files often modified for tweaks.</p></div>
+          </section>
+
+          <section id="backups" class="panel" data-index="3">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Backups</h3><div class="caret">▸</div></header>
+            <div class="panel-body"><p>Always make a backup before changing game files. Label with timestamps like <code>backup_2025-10-03</code>.</p></div>
+          </section>
+
+          <section id="me3tweaks" class="panel" data-index="4">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Installing ME3Tweaks</h3><div class="caret">▸</div></header>
+            <div class="panel-body"><p>Download ME3Tweaks Mod Manager from the official page and link it to your game directory.</p></div>
+          </section>
+
+          <section id="installing" class="panel" data-index="5">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Installing Mods</h3><div class="caret">▸</div></header>
+            <div class="panel-body"><p>Follow install orders recommended by mod authors.</p></div>
+          </section>
+
+          <section id="modlist" class="panel" data-index="6">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Mod List Overview</h3><div class="caret">▸</div></header>
+            <div class="panel-body">
+              <p>This holds overview and links to ME1/ME2/ME3 below.</p>
+              <div id="me1" class="anchor" data-parent="modlist"><h4>ME1</h4><p>ME1 notes.</p></div>
+              <div id="me2" class="anchor" data-parent="modlist"><h4>ME2</h4><p>ME2 notes.</p></div>
+              <div id="me3" class="anchor" data-parent="modlist"><h4>ME3</h4><p>ME3 notes.</p></div>
+            </div>
+          </section>
+
+          <section id="loadorder" class="panel" data-index="7">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Load Order</h3><div class="caret">▸</div></header>
+            <div class="panel-body"><p>Notes about load order and conflicts.</p></div>
+          </section>
+
+          <section id="troubleshoot" class="panel" data-index="8">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Troubleshooting</h3><div class="caret">▸</div></header>
+            <div class="panel-body"><p>Common CTD fixes and how to debug mods.</p></div>
+          </section>
+
+          <section id="textures" class="panel" data-index="9">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Optional Textures</h3><div class="caret">▸</div></header>
+            <div class="panel-body">
+              <p>Texture pack guidance and VRAM considerations.</p>
+
+              <div style="margin-top:8px">
+                <button id="toggleTextureImgBtn" class="btn">Open/Close</button>
+              </div>
+              <div id="textureImgWrap" class="hidden-media" aria-hidden="true" style="margin-top:10px">
+                <div class="media">
+                  <img src="https://picsum.photos/600/360" alt="texture placeholder" />
+                  <div class="media-body">
+                    <p>This image is inside a closed panel by default. Click the button above to open or close it. Text flows next to the image like normal content.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <section id="appendix" class="panel" data-index="10">
+            <header class="panel-header" role="button" aria-expanded="false"><h3>Appendix</h3><div class="caret">▸</div></header>
+            <div class="panel-body"><p>Extra resources, logs and links.</p>
+              <div class="warning" style="margin-top:12px">
+                <div class="icon">!</div>
+                <div>
+                  <strong>Warning:</strong>
+                  <p style="margin:6px 0 0 0">Always backup before replacing textures or running large batch installs. Incorrect files can cause crashes and corrupt savegames.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </article>
+
+        <!-- Pager -->
+        <div class="pager-box pager" role="navigation" aria-label="Panel navigation">
+          <div class="pager-left">
+            <button class="btn" id="expandAllBtn" aria-label="Expand all panels">Expand All</button>
+            <button class="btn" id="closeAllBtn" aria-label="Close all panels">Close All</button>
+          </div>
+
+          <div class="pager-right">
+            <button class="btn" id="prevPageBtn" aria-label="Previous page">Prev Page</button>
+            <button class="btn" id="nextPageBtn" aria-label="Next page">Next page</button>
+          </div>
+        </div>
+
+        <div class="bottom-strip" aria-hidden="true"></div>
+      </div>
+    </main>
+
+    <!-- RIGHT -->
+    <aside class="right-panel">
+      <div class="contents-panel" role="navigation" aria-label="Contents">
+        <h4>Contents</h4>
+        <nav><ul id="contentsList" class="contents-list"></ul></nav>
+      </div>
+
+      <div class="made-by" role="contentinfo">Made with <span class="heart">♥</span> by <span class="name">Varkorax</span></div>
+    </aside>
+
+  </div>
+
+<script>
+/* ---------- Background helper (single layer) ---------- */
+const bgLayer = document.getElementById('bgLayer');
+function setBackground(src){
+  if(!bgLayer) return;
+  bgLayer.style.backgroundImage = `url('${src}')`;
+}
+/* ensure default visible background (keeps working even if JS partially fails) */
+setBackground('./custom/img/title-candidate3.jpg');
+
+/* ---------- Title background sway (separate element) ---------- */
+/*(function(){
+  // respect reduce-motion preference
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const bg = document.getElementById('bgLayer');
+  if(!bg) return;
+
+  const baseRadius = window.innerWidth < 700 ? 12 : 26.4;
+  const speed = 0.48;
+  const mouseStrength = 6.6;
+  const centerOffsetX = -5;
+  const centerOffsetY = -5;
+  const scale = 1.1;
+
+  let t = 0;
+  let last = performance.now();
+  let mouseTargetX = 0, mouseTargetY = 0;
+  let mouseX = 0, mouseY = 0;
+  let radius = baseRadius;
+
+  function onResize() {
+      radius = window.innerWidth < 700 ? 9 : baseRadius;
+  }
+  window.addEventListener('resize', onResize, { passive: true });
+
+  function onMouseMove(e) {
+      const nx = (e.clientX / window.innerWidth) - 0.5;
+      const ny = (e.clientY / window.innerHeight) - 0.5;
+      mouseTargetX = nx * mouseStrength;
+      mouseTargetY = ny * mouseStrength;
+  }
+  function onTouchMove(e) {
+      if (!e.touches || e.touches.length === 0) return;
+      const t0 = e.touches[0];
+      onMouseMove({ clientX: t0.clientX, clientY: t0.clientY });
+  }
+  window.addEventListener('mousemove', onMouseMove, { passive: true });
+  window.addEventListener('touchmove', onTouchMove, { passive: true });
+
+  function loop(now) {
+      const dt = (now - last) / 1000;
+      last = now;
+      t += dt * speed;
+
+      const x = Math.sin(t) * radius;
+      const y = Math.cos(t * 0.9) * (radius * 0.6);
+
+      const ease = 0.12;
+      mouseX += (mouseTargetX - mouseX) * ease;
+      mouseY += (mouseTargetY - mouseY) * ease;
+
+      const totalX = x + mouseX;
+      const totalY = y + mouseY;
+
+      bg.style.transform = `translate(${centerOffsetX}%, ${centerOffsetY}%) translate(${totalX}px, ${totalY}px) scale(${scale})`;
+
+      requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
+})();*/
+
+/* ---------- Utilities ---------- */
+function basename(path){ return (path||'').split('/').pop(); }
+
+/* ---------- Panel / content logic (panels control the pager) ---------- */
+const contentBox = document.getElementById('contentBox');
+function getPanels(){ return Array.from(contentBox.querySelectorAll('.panel')); }
+let panels = getPanels();
+
+/* Build right-side contents list from panels */
+const contentsList = document.getElementById('contentsList');
+function buildContents(){
+  panels = getPanels();
+  contentsList.innerHTML = '';
+  panels.forEach((p,i)=>{
+    const heading = p.querySelector('.panel-header h3');
+    const title = heading ? heading.innerText.trim() : `Panel ${i+1}`;
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = `#${p.id}`;
+    a.textContent = `${i+1}. ${title}`;
+    a.dataset.index = i;
+    a.addEventListener('click',(e)=>{ e.preventDefault(); openPanel(i, true, null, { closeOthers:false, scrollOnOpen:true }); contentBox.scrollTo({ top: p.offsetTop, behavior:'smooth' }); });
+    li.appendChild(a);
+
+    const children = p.querySelectorAll('.anchor[data-parent]');
+    if(children.length){
+      const sub = document.createElement('ul'); sub.className='contents-sublist';
+      children.forEach(child=>{
+        const chi = document.createElement('li');
+        const ca = document.createElement('a');
+        ca.href = `#${child.id}`;
+        ca.textContent = child.querySelector('h4') ? child.querySelector('h4').innerText : child.id;
+        ca.dataset.index = i;
+        ca.dataset.anchorId = child.id;
+        ca.addEventListener('click',(ev)=>{ ev.preventDefault();
+          // open panel (do not close others) then scroll so header is top and anchor is visible below header
+          openPanel(i, true, () => {
+            const headerH = panels[i].querySelector('.panel-header').offsetHeight || 0;
+            const top = panels[i].offsetTop + headerH + child.offsetTop - 4;
+            contentBox.scrollTo({ top: top, behavior: 'smooth' });
+          }, { closeOthers:false, scrollOnOpen:true });
+        });
+        chi.appendChild(ca); sub.appendChild(chi);
+      });
+      li.appendChild(sub);
+    }
+
+    contentsList.appendChild(li);
+  });
+}
+buildContents();
+
+/* Set caret/icon for a panel header based on open state */
+function setPanelCaret(panel){
+  const header = panel.querySelector('.panel-header');
+  const caret = header.querySelector('.caret');
+  if(panel.classList.contains('open')){ header.setAttribute('aria-expanded','true'); caret.textContent='▾'; }
+  else { header.setAttribute('aria-expanded','false'); caret.textContent='▸'; }
+}
+
+/* openPanel(index, smooth=true, cb=null, opts={closeOthers:false, scrollOnOpen:true})
+   - scrollOnOpen: whether to scroll to the panel when opening
+*/
+function openPanel(index, smooth=true, cb=null, opts={closeOthers:false, scrollOnOpen:true}){
+  panels = getPanels();
+  if(index<0 || index>=panels.length) return;
+  const target = panels[index];
+
+  if(opts.closeOthers){
+    panels.forEach(p=>{ if(p !== target && p.classList.contains('open')){ p.classList.remove('open'); setPanelCaret(p); }});
+  }
+
+  if(!target.classList.contains('open')){
+    target.classList.add('open'); setPanelCaret(target);
+    // only scroll if explicitly allowed (prevents snapping when user toggles header)
+    setTimeout(()=>{
+      if(opts.scrollOnOpen){
+        contentBox.scrollTo({ top: target.offsetTop, behavior: smooth ? 'smooth' : 'auto' });
+      }
+      if(typeof cb === 'function') cb();
+      updateActivePanel(index);
+      updateActiveLinks();
+    }, smooth ? 120 : 10);
+  } else {
+    // already open: still scroll header into view if asked
+    if(opts.scrollOnOpen){
+      contentBox.scrollTo({ top: target.offsetTop, behavior: smooth ? 'smooth' : 'auto' });
+    }
+    updateActivePanel(index);
+    updateActiveLinks();
+    if(typeof cb === 'function') cb();
+  }
+}
+
+/* clicking a panel header toggles it (does NOT auto-close other panels and will NOT scroll on open) */
+contentBox.addEventListener('click',(e)=>{
+  const header = e.target.closest('.panel-header'); if(!header) return;
+  const panel = header.closest('.panel'); if(!panel) return;
+  const idx = Number(panel.dataset.index);
+  const wasOpen = panel.classList.contains('open');
+  if(wasOpen){
+    panel.classList.remove('open'); setPanelCaret(panel);
+    const openIdx = getPanels().findIndex(p=>p.classList.contains('open'));
+    updateActivePanel(openIdx >= 0 ? openIdx : 0);
+    updateActiveLinks();
+  } else {
+    // Open but don't scroll (no snapping)
+    openPanel(idx, true, null, { closeOthers:false, scrollOnOpen:false });
+  }
+});
+
+/* Page navigation & panel controls (new buttons) */
+const expandAllBtn = document.getElementById('expandAllBtn');
+const closeAllBtn = document.getElementById('closeAllBtn');
+const prevPageBtn = document.getElementById('prevPageBtn');
+const nextPageBtn = document.getElementById('nextPageBtn');
+
+function expandAllPanels(){
+  getPanels().forEach(p => { if(!p.classList.contains('open')){ p.classList.add('open'); setPanelCaret(p); }});
+  // do not auto-scroll when expanding all
+  const firstOpen = getPanels().findIndex(p=>p.classList.contains('open'));
+  updateActivePanel(firstOpen >= 0 ? firstOpen : 0);
+  updateActiveLinks();
+}
+function closeAllPanels(){
+  getPanels().forEach(p => { p.classList.remove('open'); setPanelCaret(p); });
+  updateActivePanel(0); // fallback
+  updateActiveLinks();
+}
+
+expandAllBtn.addEventListener('click', (e)=>{ e.preventDefault(); expandAllPanels(); });
+closeAllBtn.addEventListener('click', (e)=>{ e.preventDefault(); closeAllPanels(); });
+
+/* Prev/Next page navigation based on left nav .chap-item[data-href] order */
+function getChapItems(){
+  return Array.from(document.querySelectorAll('.chap-list > .chap-item'));
+}
+function findCurrentChapIndex(){
+  const currentFile = basename(window.location.pathname) || 'intro.html';
+  const items = getChapItems();
+  return items.findIndex(li => {
+    const href = li.dataset.href || (li.querySelector('.chap-link') ? basename(li.querySelector('.chap-link').getAttribute('href')||'') : '');
+    return href === currentFile;
+  });
+}
+function updatePageNavStates(){
+  const items = getChapItems();
+  const cur = findCurrentChapIndex();
+  if(cur > 0){ prevPageBtn.classList.remove('disabled'); prevPageBtn.disabled = false; } else { prevPageBtn.classList.add('disabled'); prevPageBtn.disabled = true; }
+  // find next with data-href
+  let nextIdx = -1;
+  for(let i = cur+1; i < items.length; i++){ if(items[i].dataset.href) { nextIdx = i; break; } }
+  if(nextIdx >= 0){ nextPageBtn.classList.remove('disabled'); nextPageBtn.disabled = false; } else { nextPageBtn.classList.add('disabled'); nextPageBtn.disabled = true; }
+}
+prevPageBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const items = getChapItems();
+  const cur = findCurrentChapIndex();
+  if(cur > 0 && items[cur-1] && items[cur-1].dataset.href){
+    window.location.href = items[cur-1].dataset.href;
+  }
+});
+nextPageBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const items = getChapItems();
+  const cur = findCurrentChapIndex();
+  for(let i = cur+1; i < items.length; i++){
+    if(items[i] && items[i].dataset.href){ window.location.href = items[i].dataset.href; return; }
+  }
+});
+
+/* Update "active" right-nav entry + keep currentPanelIndex up to date */
+let currentPanelIndex = getPanels().findIndex(p => p.classList.contains('open'));
+if(currentPanelIndex === -1) currentPanelIndex = 0;
+
+function updateActivePanel(index){
+  panels = getPanels();
+  currentPanelIndex = (typeof index === 'number' && index >=0 && index < panels.length) ? index : currentPanelIndex;
+  // highlight right nav entries (top-level only if no sub-anchor active)
+  contentsList.querySelectorAll('a').forEach(a=>{
+    // remove active on all first - updateActiveLinks will re-add proper ones
+    a.classList.remove('active');
+  });
+  // update page nav buttons (prev/next page)
+  updatePageNavStates();
+}
+
+/* goToPanel closes other panels and focuses the target (uncoupled from user-open state) */
+function goToPanel(index){
+  if(index < 0 || index >= getPanels().length) return;
+  openPanel(index, true, null, { closeOthers:true, scrollOnOpen:true });
+}
+
+/* Prev/Next keyboard still control panels (left/right arrows) */
+window.addEventListener('keydown', (e)=>{ if(e.key === 'ArrowLeft') goToPanel(currentPanelIndex - 1); if(e.key === 'ArrowRight') goToPanel(currentPanelIndex + 1); });
+
+/* Hashchange: open panel containing target anchor (don't close others) */
+window.addEventListener('hashchange', ()=>{
+  const id = location.hash.replace('#',''); if(!id) return;
+  panels = getPanels();
+  const panelIdx = panels.findIndex(p => p.id === id || p.querySelector(`#${id}`));
+  if(panelIdx >= 0) openPanel(panelIdx, true, () => {
+    const el = document.getElementById(id);
+    if(el){
+      const headerH = panels[panelIdx].querySelector('.panel-header').offsetHeight || 0;
+      const top = panels[panelIdx].offsetTop + headerH + el.offsetTop - 4;
+      contentBox.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }, { closeOthers:false, scrollOnOpen:true });
+});
+
+/* Build indices, set panel data-index attrs, set initial open panel if none open */
+function rebuildAll(){
+  panels = getPanels();
+  panels.forEach((p,i)=> p.dataset.index = i);
+  buildContents();
+  panels.forEach(setPanelCaret);
+  if(!panels.some(p=>p.classList.contains('open')) && panels[0]) panels[0].classList.add('open');
+  currentPanelIndex = panels.findIndex(p=>p.classList.contains('open'));
+  if(currentPanelIndex === -1) currentPanelIndex = 0;
+  updateActivePanel(currentPanelIndex);
+  // update prev/next page states too
+  updatePageNavStates();
+  updateActiveLinks();
+}
+rebuildAll();
+
+const obs = new MutationObserver(()=>{ const newPanels = getPanels(); if(newPanels.length !== panels.length || newPanels.some((p,i)=>p.id !== panels[i]?.id)) rebuildAll(); });
+obs.observe(contentBox, { childList:true, subtree:true });
+
+/* ---------- Right-nav highlight based on scroll position + sub-anchor detection ---------- */
+let scrollRaf = null;
+function handleContentScroll(){
+  panels = getPanels();
+  const st = contentBox.scrollTop;
+  // find last panel whose top is <= current scroll position + small offset
+  let idx = -1;
+  for(let i = panels.length - 1; i >= 0; i--){
+    const top = panels[i].offsetTop;
+    if(st + 10 >= top - 2){ idx = i; break; }
+  }
+  if(idx === -1) idx = 0;
+  currentPanelIndex = idx;
+  updateActivePanel(idx);
+  updateActiveLinks();
+}
+contentBox.addEventListener('scroll', ()=>{
+  if(scrollRaf) return;
+  scrollRaf = requestAnimationFrame(()=>{ handleContentScroll(); scrollRaf = null; });
+}, { passive: true });
+
+/* find nearest anchor inside content and mark corresponding right-nav link active */
+function updateActiveLinks(){
+  // clear all
+  contentsList.querySelectorAll('a').forEach(a=> a.classList.remove('active'));
+
+  const st = contentBox.scrollTop;
+  const anchors = Array.from(contentBox.querySelectorAll('.anchor'));
+  // pick the last anchor whose offsetTop is <= st + offset
+  const offset = 90; // header + some breathing room
+  let currentAnchor = null;
+  for(let i = 0; i < anchors.length; i++){
+    const a = anchors[i];
+    const top = a.offsetTop;
+    if(top - offset <= st){ currentAnchor = a; }
+    else break;
+  }
+
+  if(currentAnchor){
+    // prefer sublink active
+    const subLink = contentsList.querySelector(`a[href="#${currentAnchor.id}"]`);
+    if(subLink){ subLink.classList.add('active'); return; }
+  }
+
+  // fallback: highlight panel-level link
+  const panel = getPanels()[currentPanelIndex];
+  if(panel){
+    const panelLink = contentsList.querySelector(`a[href="#${panel.id}"]`);
+    if(panelLink) panelLink.classList.add('active');
+  }
+}
+
+/* ---------- Left nav behavior: plain links, current page disabled, vertical collapse for Mod List ---------- */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const currentFile = basename(window.location.pathname) || 'intro.html';
+  // disable the current page link in the left nav (non-selectable)
+  document.querySelectorAll('.chap-link').forEach(a=>{
+    const href = basename(a.getAttribute('href')||'');
+    if(href === currentFile){
+      a.classList.add('disabled');
+      a.removeAttribute('href');
+      a.setAttribute('aria-current','page');
+      const parentLi = a.closest('.chap-item');
+      if(parentLi) parentLi.classList.add('active');
+    }
+  });
+
+  // parent toggle for Mod List (vertical collapse)
+  const parent = document.getElementById('modListParent');
+  if(parent){
+    const header = parent.querySelector('.parent-header');
+    const btn = parent.querySelector('.tog');
+    const toggle = (ev) => {
+      ev && ev.preventDefault();
+      parent.classList.toggle('open');
+      const isOpen = parent.classList.contains('open');
+      parent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if(btn) btn.textContent = isOpen ? '▾' : '▸';
+    };
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter' || ev.key === ' ') { toggle(ev); }});
+  }
+
+  // initial page nav states (Prev/Next page)
+  updatePageNavStates();
+  // initial link highlighting
+  handleContentScroll();
+});
+
+/* toggle button for texture image inside closed panel */
+const textureToggleBtn = document.getElementById('toggleTextureImgBtn');
+const textureWrap = document.getElementById('textureImgWrap');
+if(textureToggleBtn && textureWrap){
+  textureToggleBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const isOpen = textureWrap.classList.toggle('open');
+    textureWrap.setAttribute('aria-hidden', !isOpen);
+    textureToggleBtn.textContent = isOpen ? 'Close' : 'Open/Close';
+  });
+}
+
+/* initial visual wiring */
+document.getElementById('projectTitle').textContent = `Milky Way Bar Crawl — Intro`;
+
+/* debug */
+window.__STEP = { getPanels, openPanel, goToPanel, rebuildAll, setBackground, expandAllPanels, closeAllPanels, updateActiveLinks };
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+
+Alright. Let's try this.
+
+LE1 Community Patch
+Myriad Pro Begone - Must be installed after the Community Patch, so all good. You can optionally change the dialogue wheel color to orange.
+Advanced Weapon Models - Needed for Diversification Project
+Halcyon Hairpack - Needed for Diversification Project
+Appearance Modification Menu
+Streamlined Weapon Loadouts - Has a patch for Advanced Weapon Models
+Elements of Comparative Weaponry
+Pinnacle Station DLC
+Private Message Terminal
+A Little Help From My Friends - Requires Private Message Terminal, so all good.
+Eclectic Emails - Requires Private Message Terminal, so all good.
+ME1 Dossiers Restored - Requires Private Message Terminal, so all good.
+Alliance Uniform Consitency - Requires Community Patch. Has a patch for Casual Hubs and Saren Stages.
+Casual Hubs - The default options are good.
+Black Market License
+Return to Normandy Button
+Normandy Rapid Transit
+Skip Minigames
+Charted Worlds
+Galaxy Map Trackers
+Mission Timings
+N7 Mako
+XP Rescale
+Keepers Finders - Has a patch for Diversification Project and Alliance Uniform Consistency
+Dr. Heart Experiments
+Alternate Feros Claw Cutscene
+Geth Retrofits - Requires Appearance Modification Menu. Advanced Weapon Models recommended.
+Tali Consistency Mod - One of those cases we discussed earlier. Depending on whether you want to install the ALOT textures later or if you use Liara Consistency Project and Casual Hubs you need a different combo patch. It's not confusing or anything just a touch obtuse.
+Liara Consistency Mod - Has a patch for Alliance Uniform Consistency, Tali Consistency Mod and Casual Hubs
+Mira Please Be Quiet
+Remove Feros Color Filter - Has a patch for MELLO
+Saren Stages - If you want to use Diversification Project stay with the default option.
+MELLO
+Smoother GUI - Has a patch for Myriad Pro Begone and Pinnacle Station DLC. For the Myriad Pro Begone patch you need to remember which color you picked, default or orange.
+LE1 Diversification Project - Requires the Community Patch, Advanced Weapon Models and Halcyon Hairpack. Has a patch for Alliance Uniform Consistency, MELLO, Appearance Modification Menu and Saren Stages. You need to choose whether you want Saren in Robes or Armor during the Prologue and Council call but that is flavor; The important part I mentioned in Saren Stages.
+A Lot Of Videos
+
+You know what this isn't as opaque as I remembered it. From this follows then that this should work:
+
+LE1 Community Patch
+Myriad Pro Begone
+Advanced Weapon Models
+Halcyon Hairpack
+Appearance Modification Menu
+Geth Retrofits
+Streamlined Weapon Loadouts
+Elements of Comparative Weaponry
+Pinnacle Station DLC
+Private Message Terminal
+A Little Help From My Friends
+Eclectic Emails
+ME1 Dossiers Restored
+Casual Hubs
+Black Market License
+Return to Normandy Button
+Normandy Rapid Transit
+Skip Minigames
+Charted Worlds
+Galaxy Map Trackers
+Mission Timings
+N7 Mako
+XP Rescale
+Dr. Heart Experiments
+Alternate Feros Claw Cutscene
+Mira Please Be Quiet
+Saren Stages
+Alliance Uniform Consistency
+Liara Consistency Mod
+MELLO
+Remove Feros Color Filter
+LE1 Diversification Project
+Keepers Finders
+A Lot of Videos
+Smoother GUI
+
+...Right?
+Right. OK LE1 is done. Restore, do the new order, make the Mod Batch file.

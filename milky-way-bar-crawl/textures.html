@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <title>| Textures</title>
+    <link rel="shortcut icon" href="./custom/favicon.svg" />
+    
+    <link rel="stylesheet" href="./custom/external/glightbox/dist/css/glightbox.css" />
+    <link rel="stylesheet" href="./custom/css/guide.css" />
+    <style>
+        :root{
+            --accent-r: 145; --accent-g: 90; --accent-b: 180; /* soft violet */
+            --accent: var(--accent-r),var(--accent-g),var(--accent-b);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background (single reliable layer) -->
+    <div class="bg-viewport" aria-hidden="true">
+        <div id="bgLayer" class="bg-layer" style="background-image:url('./custom/img/background/bg-extra.webp');"></div>
+    </div>
+    <div class="bg-vignette" aria-hidden="true"></div>
+
+    <div class="layout" id="layoutRoot">
+
+        <!-- LEFT -->
+        <aside class="left-panel" id="leftPanel" role="navigation" aria-label="Chapters">
+            <h3>Bar Crawl</h3>
+            <ul class="chap-list" id="chapList">
+                <li class="chap-item" data-href="intro.html">
+                    <a class="chap-link" href="intro.html">1. Introduction</a>
+                </li>
+
+                <li class="chap-item" data-href="setup.html">
+                    <a class="chap-link" href="setup.html">2. Setup</a>
+                </li>
+                
+                <!-- Mod List is a vertical collapsible parent. Starts open. -->
+                <li class="chap-item parent open" id="modListParent" aria-expanded="true">
+                    <div class="parent-header" role="button" tabindex="0" aria-expanded="true">
+                        <button class="tog" aria-hidden="true">▾</button>
+                        <span class="label">3. Modding</span>
+                    </div>
+                    <ul class="sub-list" role="menu" aria-label="Mod List subchapters">
+                        <li class="sub-item" role="none"><a role="menuitem" href="me1.html">3.1. LE1</a></li>
+                        <li class="sub-item" role="none"><a role="menuitem" href="me2.html">3.2. LE2</a></li>
+                        <li class="sub-item" role="none"><a role="menuitem" href="me3.html">3.3. LE3</a></li>
+                    </ul>
+                </li>
+                
+                <li class="chap-item" data-href="finish.html">
+                    <a class="chap-link" href="finish.html">4. Finish</a>
+                </li>
+                
+                <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+                
+                <h3>After Hours</h3>
+                
+                <li class="chap-item" data-href="extras.html">
+                    <a class="chap-link" href="extras.html">5. Extras</a>
+                </li>
+                
+                <li class="chap-item" data-href="textures.html">
+                    <a class="chap-link" href="textures.html">6. Textures</a>
+                </li>
+                
+                <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
+                
+                <h3>Admin</h3>
+                
+                <li class="chap-item" data-href="changelog.html">
+                    <a class="chap-link" href="changelog.html">7. Changelog</a>
+                </li>
+                
+                <li class="chap-item" data-href="credits.html">
+                    <a class="chap-link" href="credits.html">8. Credits</a>
+                </li>
+            </ul>
+            
+            <hr style="color:#fff;width:75%;margin-left:0">
+            <hr style="color:#fff;width:50%;margin-left:0">
+            <p class="text-standard" style="text-align:left;">Last Updated:<br> Oct 2025 (v.1.0)</p>
+            
+        </aside>
+
+        <!-- CENTER -->
+        <main class="center-col" role="main">
+            <div class="content-shell" id="contentShell">
+
+                <div class="title-box">
+                    <div id="titleBackground" class="title-bg"></div>
+                    <h1 id="projectTitle">Milky Way Bar Crawl - Textures</h1>
+                    <button id="fontToggle" class="btn text-standard" aria-label="Toggle accessible fonts" title="Font Toggle">Aa</button>
+                </div>
+
+                <article class="content-box" id="contentBox" tabindex="0" aria-labelledby="stepTitle">
+                    
+                    <!-- Panel 0 -->
+                    <section id="preamble" class="panel open" data-index="0">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>Time To Finish This</h3>
+                            <div class="caret">▾</div>
+                        </header>
+
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                Welcome to the last stop on our night out together!<br>
+                                Let's finish strong and freshen up the visuals a bit.<br>
+                            </p>
+                            
+                            <div id="preamble-last" class="anchor" data-parent="preamble">
+                                <h4>One Final Warning</h4>
+                                <div class="warning">
+                                    <div class="icon">!</div>
+                                    <p class="text-standard">
+                                        Texture modding your game(s) should be the very last step for your mod list.<br>
+                                        If something goes wrong or you decide to ignore my warnings and try to install content mods after this your game <b>will</b> break.<br>
+                                        You might think these warnings excessive but believe you me if anyone comes to me complaining about this I will be very...!<br>
+                                        *flips through a thesaurus* ...roiled!
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <!-- Panel 1 -->
+                    <section id="me1" class="panel" data-index="2">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>LE1</h3>
+                            <div class="caret">▾</div>
+                        </header>
+
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                For texture modding we want the bare <code>.mem</code> files, so after you download these mods open and extract them to somwhere easy to access.
+                            </p>
+                            
+                            <div id="le1-op" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/363" target="_blank">A Lot Of Textures (LE1)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Enhanced, upscaled textures. Filling in the blindspots left by the LE.
+                                </p>
+                            </div>
+                            
+                            <div id="le1-is" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/363" target="_blank">Improved Static Lighting (LE1)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Smoother static lighting with minimal performance loss.
+                                </p>
+                                <div class="caution">
+                                    <div class="icon">?</div>
+                                    <p class="text-standard">
+                                        ISL is one of the biggest mods on the list and will take a long time to download as a free user.<br>
+                                        You may wish to either get a month of premium <b>or</b> use the provided torrent.<br>
+                                        Should you choose the latter, I recommend <b><u><a href="https://www.qbittorrent.org">QBitTorrent</a></u></b>.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div id="le1-leu" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1825" target="_blank">LEUITM (LE1)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Lore-friendly HD textures for characters.<br>
+                                    <b>Note:</b> If you use <b>LE1 Diversification Project</b>, select <code>AsariLE1DPCompatLEUITM.mem</code> — not the other two Asari options.<br>
+                                    <b>Note:</b> If you use the Liara Consistency Mod, skip her files or choose <code>LiaraLOTSBLEUITM.mem</code>.<br>
+                                    <b>Note:</b> Only pick one file per category (e.g. choose <code>WrexLEUITM.mem</code> <i>or</i> <code>WrexBattleHardenedLEUITM.mem</code>).
+                                </p>
+                            </div>
+                            
+                            <div id="le1-sta" class="anchor" data-parent="me1">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2470" target="_blank">Sol Textures 2024</a></u></b></h4>
+                                <p class="text-standard">
+                                    Replaces the textures of Earth, Jupiter and Neptune with newer imagery from NASA.
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <!-- Panel 2 -->
+                    <section id="me2" class="panel" data-index="3">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>LE2</h3>
+                            <div class="caret">▾</div>
+                        </header>
+
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                For texture modding we still want the bare <code>.mem</code> files, so after you download these mods open and extract the innards to somwhere easy to access.
+                            </p>
+                            
+                            <div id="le2-op" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/363" target="_blank">A Lot Of Textures (LE2)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Enhanced, upscaled textures. Filling in the blindspots left by the LE.
+                                </p>
+                            </div>
+                            
+                            <div id="le2-is" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/363" target="_blank">Improved Static Lighting (LE2)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Smoother static lighting with minimal performance loss.
+                                </p>
+                                <div class="caution">
+                                    <div class="icon">?</div>
+                                    <p class="text-standard">
+                                        ISL is one of the biggest mods on the list and will take a long time to download as a free user.<br>
+                                        You may wish to either get a month of premium <b>or</b> use the provided torrent.<br>
+                                        Should you choose the latter, I recommend <b><u><a href="https://www.qbittorrent.org">QBitTorrent</a></u></b>.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div id="le2-leu" class="anchor" data-parent="me2">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1827" target="_blank">LEUITM (LE2)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Lore Friendly HD textures for characters.<br>
+                                    <b>Note</b>: If you use Liara Consistency Mod you can skip her files. Otherwise I recommend using <code>LiaraFaceLOTSBStyleLEUITM2.mem</code><br>
+                                    <b>Note</b>: Only choose one file per category. So for example choose either <code>WrexLEUITM2.mem</code> OR <code>WrexBattleHardenedLEUITM2.mem</code>
+                                </p>
+                            </div>
+							
+							<div id="le2-kas" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1137" target="_blank">Jenya's Kasumi Complexion</a></u></b></h4>
+                                <p class="text-standard">
+                                    A retexture of Kasumi's face which complements her updated LEUITM armor.<br>
+									<b>Note</b>: I recommend the Vanilla Makeup.
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <!-- Panel 3 -->
+                    <section id="me3" class="panel" data-index="4">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>LE3</h3>
+                            <div class="caret">▾</div>
+                        </header>
+
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                For texture modding we need the delicious bare <code>.mem</code> files, so after you download these mods open and extract those tasty morsels to somwhere easy to access.
+                            </p>
+                            
+                            <div id="le3-op" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/363" target="_blank">A Lot Of Textures (LE3)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Enhanced, upscaled textures. Filling in the blindspots left by the LE.
+                                </p>
+                            </div>
+                            
+                            <div id="le3-is" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/363" target="_blank">Improved Static Lighting (LE3)</a></u></b></h4>
+                                <p class="text-standard">
+                                    Smoother static lighting with minimal performance loss.
+                                </p>
+                                <div class="caution">
+                                    <div class="icon">?</div>
+                                    <p class="text-standard">
+                                        ISL is one of the biggest mods on the list and will take a long time to download as a free user.<br>
+                                        You may wish to either get a month of premium <b>or</b> use the provided torrent.<br>
+                                        Should you choose the latter, I recommend <b><u><a href="https://www.qbittorrent.org">QBitTorrent</a></u></b>.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <!-- Panel 4 -->
+                    <section id="install" class="panel" data-index="5">
+                        <header class="panel-header" role="button" aria-expanded="true">
+                            <h3>Installation</h3>
+                            <div class="caret">▾</div>
+                        </header>
+
+                        <div class="panel-body">
+                            <p class="text-standard">
+                                Now that you have everything you need all that is left is the installation itself!
+                            </p>
+                            
+                            <div id="me-m" class="anchor" data-parent="install">
+                                <h4>MEM (Mass Effect Modder)</h4>
+                                <p class="text-standard">
+                                    Just like M3, the community has created its own dedicated tool for texture modding, simply called
+                                    <b>Mass Effect Modder</b> or <b>MEM</b>.<br>
+                                    Thankfully, we can launch it directly from inside M3 this time.<br>
+                                    Open <b>M3</b> → navigate to <b>Tools</b> → select <b>Mass Effect Modder</b> from the dropdown. M3 will download and open the latest version automatically.
+                                </p>
+                            </div>
+                            
+                            <div id="me-me" class="anchor" data-parent="install">
+                                <h4>The Long Wait</h4>
+                                <p class="text-standard">
+                                    The main window might look a bit overwhelming at first, but don’t worry—most of it doesn’t concern us.<br>
+                                    In the column for the game you wish to mod, click on <b>Texture Modding → Install Texture Mods</b>.<br><br>
+                                    MEM will give you one final warning that you can’t install any more content mods afterward. But since you’ve been such a diligent reader, you know this already and can confidently click <b>OK</b>.<br><br>
+
+                                    Before adding your mods, a quick note about order: MEM installs texture mods from top to bottom, meaning that mods lower on the list will overwrite those above if they touch the same files.<br><br>
+                                    For example, say you have two mods: <code>PrettyHands.mem</code> and <code>MagnificentGrabbers.mem</code>. You add them one after another so that the second appears lower on the list. When you install them, nothing explodes (hopefully), and in-game you’ll see only the textures from <b>Magnificent Grabbers</b>. <br><br>
+                                    So, order matters! When ready, click <b>Add to list</b> and select your texture mods. I recommend your list to look something like this:
+                                </p>
+                            </div>
+                            
+                            <div class="informational-carousel" data-gallery="m3-install">
+                                <div class="infc-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="M3 installation steps">
+                                    <div class="infc-track">
+
+                                        <div class="stepper infc-item">
+                                            <div class="media">
+                                                <a href="./custom/img/guide/guide-textures-le1.png"
+                                                   class="glightbox"
+                                                   data-title="Texture Order for LE1"
+                                                   data-description="Your order should look like this, more or less.">
+                                                    <img src="./custom/img/guide/guide-textures-le1.png"
+                                                         alt="M3 releases page (download)"
+                                                         class="media-image">
+                                                </a>
+
+                                                <div class="media-body">
+                                                    <p class="media-text text-standard">
+                                                        <b>Texture Order for LE1</b>:<br>Your order should look like this, more or less.
+                                                        <br><br>
+                                                        (<b>Hint</b>: You can click on the images to view them fullscreen.)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stepper infc-item">
+                                            <div class="media">
+                                                <a href="./custom/img/guide/guide-textures-le2.png"
+                                                   class="glightbox"
+                                                   data-title="Texture Order for LE2"
+                                                   data-description="Your order should look like this, more or less.">
+                                                    <img src="./custom/img/guide/guide-textures-le2.png"
+                                                         alt="Extract M3 archive to a folder"
+                                                         class="media-image">
+                                                </a>
+
+                                                <div class="media-body">
+                                                    <p class="media-text text-standard">
+                                                        <b>Texture Order for LE2</b>:<br>Your order should look like this, more or less.
+                                                        <br><br>
+                                                        (<b>Hint</b>: You can click on the images to view them fullscreen.)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stepper infc-item">
+                                            <div class="media">
+                                                <a href="./custom/img/guide/guide-textures-le3.png"
+                                                   class="glightbox"
+                                                   data-title="Texture Order for LE3"
+                                                   data-description="Your order should look like this, more or less.">
+                                                    <img src="./custom/img/guide/guide-textures-le3.png"
+                                                         alt="Open M3 and point to folder"
+                                                         class="media-image">
+                                                </a>
+
+                                                <div class="media-body">
+                                                    <p class="media-text text-standard">
+                                                        <b>Texture Order for LE3</b>:<br>Your order should look like this, more or less.
+                                                        <br><br>
+                                                        (<b>Hint</b>: You can click on the images to view them fullscreen.)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="infc-controls" aria-hidden="false">
+                                    <button class="infc-arrow infc-prev" aria-label="Previous step" type="button">‹</button>
+                                    <div class="infc-dots" role="tablist" aria-label="Step indicators"></div>
+                                    <button class="infc-arrow infc-next" aria-label="Next step" type="button">›</button>
+                                </div>
+                            </div>
+                            
+                            <p class="text-standard">
+                                Once your order looks good, click <b>Install All</b>!<br>
+                                Now sit back and relax. Depending on your setup, this process might take up to an hour or more.<br><br>
+                                When it’s done, you’ll see a confirmation popup. Launch your game to ensure nothing’s melted or attached itself backwards.
+                            </p>
+                            
+                            <br>
+                            <hr style="color:#fff;width:99%;margin-left:0">
+                            <br>
+                            
+                            <div id="me-par" class="anchor" data-parent="install">
+                                <h4>The End</h4>
+                                <p class="text-standard">
+                                    Congrats! You've made it to last call.<br>
+                                    Your Mass Effect experience should now be brighter, sharper, and hopefully still functioning.<br>
+                                    You can safely close both <b>MEM</b> and <b>M3</b> - your textures are installed and your galaxy is in high definition.<br><br>
+                                    This also means our time together comes to and end... for now.<br>
+                                    But I'll be right here if the urge for another crawl strikes.<br><br>
+                                    Thanks for sticking around, and good night, Commander.
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                </article>
+                
+                <div class="pager-box pager" role="navigation" aria-label="Panel navigation">
+                    <div class="pager-left">
+                        <button class="btn text-standard" id="expandAllBtn" aria-label="Expand all panels">Expand All</button>
+                        <button class="btn text-standard" id="closeAllBtn" aria-label="Close all panels">Close All</button>
+                    </div>
+
+                    <div class="pager-right">
+                        <button class="btn text-standard" id="prevPageBtn" aria-label="Previous page">Prev Page</button>
+                        <button class="btn text-standard" id="nextPageBtn" aria-label="Next page">Next Page</button>
+                    </div>
+                </div>
+
+                <div class="bottom-strip" aria-hidden="true"></div>
+            </div>
+        </main>
+
+        <!-- RIGHT -->
+        <aside class="right-panel">
+            <div class="contents-panel" role="navigation" aria-label="Contents">
+                <h4>Content</h4>
+                <nav>
+                    <ul id="contentsList" class="contents-list"></ul>
+                </nav>
+            </div>
+
+            <div class="made-by" role="contentinfo">
+                Made with <span class="heart">♥</span> by <span class="name"><a href="https://varkorax.github.io" target="_blank">Varkorax</a></span>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="./custom/external/glightbox/dist/js/glightbox.min.js" defer></script>
+    <script src="./custom/js/guide.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('fontToggle');
+            const key = 'accessibleFonts';
+            const enabled = localStorage.getItem(key) === 'true';
+
+            if (enabled) document.body.classList.add('accessible-fonts');
+
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('accessible-fonts');
+                localStorage.setItem(key, document.body.classList.contains('accessible-fonts'));
+            });
+        });
+    </script>
+
+</body>
+</html>
