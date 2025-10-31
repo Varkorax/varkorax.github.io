@@ -1,0 +1,102 @@
+<!--
+Rough SVG approximation of a neon/vaporwave logo:
+- Cyan/blue neon cocktail glass
+- Spiral galaxy hovering above the rim like a garnish
+- Transparent background (no solid fill)
+
+You can right-click > Save As to download the SVG. Edit colors by adjusting CSS variables below.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neon Galaxy Cocktail (SVG Rough)</title>
+  <style>
+    :root{
+      --neon-cyan: #35e0ff;
+      --neon-blue: #2f66ff;
+      --neon-white: #e6faff;
+      --stroke-glass: var(--neon-cyan);
+      --stroke-galaxy: var(--neon-cyan);
+      --stroke-stars: var(--neon-white);
+    }
+    html, body {
+      margin: 0; height: 100%;
+      background: repeating-conic-gradient(#111 0% 25%, #141414 0% 50%) 0/32px 32px;
+      /* Checkerboard only for preview. Remove the line above for pure transparency. */
+      display: grid; place-items: center;
+    }
+    .wrap { width: min(90vmin, 900px); }
+    svg { width: 100%; height: auto; display: block; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <defs>
+        <!-- Soft neon glow filter -->
+        <filter id="glow-soft" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6" result="blur1"/>
+          <feGaussianBlur stdDeviation="14" in="SourceGraphic" result="blur2"/>
+          <feMerge>
+            <feMergeNode in="blur1"/>
+            <feMergeNode in="blur2"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <!-- Stronger glow for stars/galaxy -->
+        <filter id="glow-strong" x="-70%" y="-70%" width="240%" height="240%">
+          <feGaussianBlur stdDeviation="10" result="b1"/>
+          <feMerge>
+            <feMergeNode in="b1"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <!-- Gradient for glass stroke -->
+        <linearGradient id="grad-glass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="var(--neon-cyan)"/>
+          <stop offset="100%" stop-color="var(--neon-blue)"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Glass: bowl (inverted triangle) -->
+      <g id="glass" stroke="url(#grad-glass)" stroke-width="10" filter="url(#glow-soft)">
+        <!-- Rim and sides as a polygon path for crisp corners -->
+        <path d="M 300 300 L 724 300 L 512 540 Z" />
+        <!-- Stem -->
+        <path d="M 512 540 L 512 770" stroke-width="12" />
+        <!-- Base -->
+        <path d="M 400 800 Q 512 780 624 800" />
+      </g>
+
+      <!-- Galaxy garnish group above the rim -->
+      <g id="galaxy" stroke="var(--stroke-galaxy)" stroke-width="8" filter="url(#glow-strong)">
+        <!-- Single unified spiral -->
+        <path d="M 512 210
+                 C 620 150, 720 260, 640 320
+                 C 580 360, 500 330, 480 270
+                 C 455 200, 390 210, 380 260
+                 C 370 310, 430 370, 500 360" />
+        <!-- Inner core glow -->
+        <circle cx="512" cy="210" r="10" fill="var(--neon-white)"/>
+      </g>
+
+      <!-- Star specks around the galaxy -->
+      <g id="stars" fill="var(--stroke-stars)" filter="url(#glow-strong)">
+        <circle cx="590" cy="180" r="2.2"/>
+        <circle cx="450" cy="175" r="1.8"/>
+        <circle cx="660" cy="220" r="2.0"/>
+        <circle cx="370" cy="240" r="1.6"/>
+        <circle cx="560" cy="270" r="1.5"/>
+        <circle cx="468" cy="292" r="1.7"/>
+      </g>
+
+      <!-- Subtle rim highlight to suggest the galaxy is above the glass -->
+      <g id="rim-highlight" stroke="var(--neon-white)" stroke-opacity="0.35" filter="url(#glow-soft)">
+        <path d="M 330 300 Q 512 276 694 300" stroke-width="4"/>
+      </g>
+    </svg>
+  </div>
+</body>
+</html>

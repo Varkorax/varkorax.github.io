@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="./custom/external/glightbox/dist/css/glightbox.css" />
     <link rel="stylesheet" href="./custom/css/guide.css" />
     <style>
-    :root{
-        --accent-r: 145; --accent-g: 90; --accent-b: 180; /* soft violet */
-        --accent: var(--accent-r),var(--accent-g),var(--accent-b);
-    }
+        :root{
+            --accent-r: 145; --accent-g: 90; --accent-b: 180; /* soft violet */
+            --accent: var(--accent-r),var(--accent-g),var(--accent-b);
+        }
     </style>
 </head>
 <body>
@@ -97,7 +97,6 @@
             <div class="content-shell" id="contentShell">
 
                 <div class="title-box">
-                    <!-- <div id="titleBackground" class="title-bg" style="background-image:url('./custom/img/title-candidate2.jpg');"></div> -->
                     <div id="titleBackground" class="title-bg"></div>
                     <h1 id="projectTitle">Milky Way Bar Crawl - Textures</h1>
                     <button id="fontToggle" class="btn text-standard" aria-label="Toggle accessible fonts" title="Font Toggle">Aa</button>
@@ -122,10 +121,10 @@
                                 <h4>One Final Warning</h4>
 								
                                 <div style="margin-top:8px">
-								<button id="toggleTextureImgBtn3" class="btn">Open/Close</button>
+								<button id="toggleTextureImgBtn" class="btn">Open/Close</button>
 								</div>
 								
-								<div id="textureImgWrap3" class="hidden-media" aria-hidden="true" style="margin-top:10px">
+								<div id="textureImgWrap" class="hidden-media" aria-hidden="true" style="margin-top:10px">
 									<div class="media-body">
 										<div class="warning">
                                     <div class="icon">!</div>
@@ -153,7 +152,7 @@
                     </section>
                     
                     <!-- Panel 1 -->
-                    <section id="me1" class="panel" data-index="1">
+                    <section id="me1" class="panel" data-index="2">
                         <header class="panel-header" role="button" aria-expanded="true">
                             <h3>LE1</h3>
                             <div class="caret">▾</div>
@@ -178,65 +177,15 @@
                                 </p>
                             </div>
                             
-                            <br>
-                            <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
-                            <br>
-							
-                            <p class="text-standard">
-                                A choice stands before you. I recommend two popular texture mods that both improve character visuals: <b>LEUITM</b> and <b>Primitives</b>.<br>
-                                Each has its strengths - <b>LEUITM</b> aims to bring characters in line with their LE3 look. <b>Primitives</b> focuses on telling a story by making humans and asari visually age as each game becomes darker.<br><br>
-                                If you’d rather keep things simple, stick with <b>LEUITM</b> since it provides broader coverage overall.<br>
-                                Otherwise, check the setup below for how to combine both mods effectively.
-                            </p>
-
                             <div id="le1-leu" class="anchor" data-parent="me1">
                                 <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1825" target="_blank">LEUITM (LE1)</a></u></b></h4>
                                 <p class="text-standard">
                                     Lore-friendly HD textures for characters.<br>
-                                    <b>Note:</b> If you use Liara Consistency Mod and are not planning on using Primitives, skip her files or choose <code>LiaraLOTSBLEUITM.mem</code>.<br>
-                                    <b>Note:</b> Only pick one file per category (e.g. choose <code>WrexVanillaStyleLEUITM.mem</code> <i>or</i> <code>WrexBattleHardenedLEUITM.mem</code>).<br>
-									<b>Note:</b> If you use <b>LE1 Diversification Project</b>, select <code>AsariLE1DPCompatLEUITM.mem</code> - not the other two Asari options.
+                                    <b>Note:</b> If you use <b>LE1 Diversification Project</b>, select <code>AsariLE1DPCompatLEUITM.mem</code> — not the other two Asari options.<br>
+                                    <b>Note:</b> If you use the Liara Consistency Mod, skip her files or choose <code>LiaraLOTSBLEUITM.mem</code>.<br>
+                                    <b>Note:</b> Only pick one file per category (e.g. choose <code>WrexLEUITM.mem</code> <i>or</i> <code>WrexBattleHardenedLEUITM.mem</code>).
                                 </p>
                             </div>
-
-                            <div id="le1-pri" class="anchor" data-parent="me1">
-                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/22" target="_blank">Primitives</a></u></b></h4>
-                                <p class="text-standard">
-                                    High-quality textures for humans and asari.<br>
-                                    <b>Note:</b> Make sure to meet all listed requirements. If you’ve been following this guide closely, you should already have what’s needed.
-                                </p>
-                            </div>
-                            
-							<div id="le1-both" class="anchor" data-parent="me1">
-                                <h4><b>(I Want Both)</b></h4>
-								<div style="margin-top:8px">
-                                    <button id="toggleTextureImgBtn" class="btn">Open/Close</button>
-                                </div>
-                                <div id="textureImgWrap" class="hidden-media" aria-hidden="true" style="margin-top:10px">
-                                    <div class="informational">
-									<div class="media-body">
-                                        <p class="text-standard">
-                                            If you want to use <b>LEUITM</b> and <b>Primitives</b> together, extract all <code>.mem</code> files from <b>LEUITM</b> as normal, then delete the following files from the folder:<br><br>
-                                            - AndersonLEUITM.mem<br>
-											- AsariLE1DPCompatLEUITM.mem (<b>only</b> if you are <b>not</b> using Diversification Project)<br>
-											- AsariScalyLEUITM.mem<br>
-											- AsariSmootherLEUITM.mem<br>
-											- AshLEUITM.mem<br>
-											- BroShepLEUITM.mem<br>
-											- FemShepLEUITM.mem<br>
-											- HumanEyesLEUITM.mem<br>
-											- KaidanLEUITM.mem<br>
-											- LiaraLEUITM.mem<br>
-											- LiaraLOTSBLEUITM.mem<br>
-											- SheplooLEUITM.mem
-                                        </p>
-                                    </div>
-									</div>
-                                </div>
-                            </div>
-							
-							<br>
-                            <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
                             
                             <div id="le1-sta" class="anchor" data-parent="me1">
                                 <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/2470" target="_blank">Sol Textures 2024</a></u></b></h4>
@@ -249,7 +198,7 @@
                     </section>
                     
                     <!-- Panel 2 -->
-                    <section id="me2" class="panel" data-index="2">
+                    <section id="me2" class="panel" data-index="3">
                         <header class="panel-header" role="button" aria-expanded="true">
                             <h3>LE2</h3>
                             <div class="caret">▾</div>
@@ -257,7 +206,7 @@
 
                         <div class="panel-body">
                             <p class="text-standard">
-                                For texture modding we want the bare <code>.mem</code> files, so after you download these mods open and extract them to somwhere easy to access.
+                                For texture modding we still want the bare <code>.mem</code> files, so after you download these mods open and extract the innards to somwhere easy to access.
                             </p>
                             
                             <div id="le2-op" class="anchor" data-parent="me2">
@@ -274,88 +223,28 @@
                                 </p>
                             </div>
                             
-                            <br>
-                            <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
-                            <br>
-							
-                            <p class="text-standard">
-                                A choice stands before you. I recommend two popular texture mods that both improve character visuals: <b>LEUITM2</b> and <b>Primitives</b>.<br>
-                                Each has its strengths - <b>LEUITM2</b> aims to bring characters in line with their LE3 look. <b>Primitives</b> focuses on telling a story by making humans and asari visually age as each game becomes darker.<br><br>
-                                If you’d rather keep things simple, stick with <b>LEUITM</b> since it provides broader coverage overall.<br>
-                                Otherwise, check the setup below for how to combine both mods effectively.
-                            </p>
-                            
                             <div id="le2-leu" class="anchor" data-parent="me2">
                                 <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1827" target="_blank">LEUITM (LE2)</a></u></b></h4>
                                 <p class="text-standard">
                                     Lore Friendly HD textures for characters.<br>
-                                    <b>Note:</b> If you use Liara Consistency Mod and are not planning on using Primitives, skip her files or choose <code>LiaraFaceLOTSBStyleLEUITM2.mem</code>.<br>
+                                    <b>Note</b>: If you use Liara Consistency Mod you can skip her files. Otherwise I recommend using <code>LiaraFaceLOTSBStyleLEUITM2.mem</code><br>
                                     <b>Note</b>: Only choose one file per category. So for example choose either <code>WrexLEUITM2.mem</code> OR <code>WrexBattleHardenedLEUITM2.mem</code>
                                 </p>
                             </div>
-                            
-                            <div id="le2-pri" class="anchor" data-parent="me2">
-                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/22" target="_blank">Primitives</a></u></b></h4>
+							
+							<div id="le2-kas" class="anchor" data-parent="me3">
+                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1137" target="_blank">Jenya's Kasumi Complexion</a></u></b></h4>
                                 <p class="text-standard">
-                                    High-quality textures for humans and asari.<br>
-                                    <b>Note</b>: Make sure to meet all listed requirements. If you’ve been following this guide closely you should have everything you need.<br>
-									<b>Note</b>: Grab both Miscellaneous files as they contain needed fixes.
+                                    A retexture of Kasumi's face which complements her updated LEUITM armor.<br>
+									<b>Note</b>: I recommend the Vanilla Makeup.
                                 </p>
                             </div>
                             
-							<div id="le2-both" class="anchor" data-parent="me2">
-                                <h4><b>(I Want Both)</b></h4>
-                                <div style="margin-top:8px">
-                                    <button id="toggleTextureImgBtn2" class="btn">Open/Close</button>
-                                </div>
-                                <div id="textureImgWrap2" class="hidden-media" aria-hidden="true" style="margin-top:10px">
-                                    <div class="informational">
-									<div class="media-body">
-                                        <p class="text-standard">
-                                            If you want to use <b>LEUITM2</b> and <b>Primitives</b> together, extract all <code>.mem</code> files from <b>LEUITM2</b> as normal, then delete the following files from the folder:<br><br>
-											- AndersonLEUITM2.mem<br>
-											- AsariScalyLEUITM2.mem<br>
-											- AsariSmoothLEUITM2.mem<br>
-											- AshLEUITM2.mem<br>
-											- BroshepLEUITM2.mem<br>
-											- CerberusUniformsLEUITM2.mem<br>
-											- FemShepLEUITM2.mem<br>
-											- Human_Eyes_LEUITM2.mem<br>
-											- JackLEUITM2.mem<br>
-											- JacobLEUITM2.mem<br>
-											- KaidanLEUITM2.mem<br>
-											- KasumiLEUITM2.mem<br>
-											- LiaraArmorLEUITM2.mem<br>
-											- LiaraFaceLOTSBStyleLEUITM2.mem<br>
-											- LiaraFaceME1StyleStyleLEUITM2.mem<br>
-											- LiaraFaceOGTransitionLEUITM2.mem<br>
-											- MIrandaLEUITM2.mem<br>
-											- SamaraMorinthLEUITM2.mem<br>
-											- SheplooLEUITM2.mem<br>
-											- TIMLEUITM2.mem<br>
-											- ZaeedLEUITM2.mem
-                                        </p>
-                                    </div>
-									</div>
-                                </div>
-                            </div>
-							
-							<br>
-                            <hr style="color:#fff;width:99%;text-align:left;margin-left:0">
-                            
-                            <div id="le2-crash" class="anchor" data-parent="me2">
-                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/874" target="_blank">Improved Normandy Crash Site Flashback Textures</a></u></b></h4>
-                                <p class="text-standard">
-                                    Updates the flasback images shown during Normandy Crash Site.<br>
-									<b>Note</b>: If you've been following the guide closely you'll want the optional file, not the main one.
-                                </p>
-                            </div>
-							
                         </div>
                     </section>
                     
                     <!-- Panel 3 -->
-                    <section id="me3" class="panel" data-index="3">
+                    <section id="me3" class="panel" data-index="4">
                         <header class="panel-header" role="button" aria-expanded="true">
                             <h3>LE3</h3>
                             <div class="caret">▾</div>
@@ -363,7 +252,7 @@
 
                         <div class="panel-body">
                             <p class="text-standard">
-                                For texture modding we want the bare <code>.mem</code> files, so after you download these mods open and extract them to somwhere easy to access.
+                                For texture modding we need the delicious bare <code>.mem</code> files, so after you download these mods open and extract those tasty morsels to somwhere easy to access.
                             </p>
                             
                             <div id="le3-op" class="anchor" data-parent="me3">
@@ -380,21 +269,11 @@
                                 </p>
                             </div>
                             
-                            <div id="le3-pri" class="anchor" data-parent="me3">
-                                <h4><b><u><a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/22" target="_blank">Primitives</a></u></b></h4>
-                                <p class="text-standard">
-                                    High-quality textures for humans and asari.<br>
-                                    <b>Note</b>: Make sure to meet all listed requirements. If you’ve been following this guide closely, you should have everything you need.<br>
-									<b>Note</b>: Grab both Miscellaneous files as they contain needed fixes.<br>
-                                    <b>Note</b>: If you are <b>not</b> using a mod which replaces Diana Allers you'll need <a href="https://www.nexusmods.com/masseffectlegendaryedition/mods/1136"><u><b>Diana Allers Overhaul</b></u></a>.
-                                </p>
-                            </div>
-                            
                         </div>
                     </section>
                     
                     <!-- Panel 4 -->
-                    <section id="install" class="panel" data-index="4">
+                    <section id="install" class="panel" data-index="5">
                         <header class="panel-header" role="button" aria-expanded="true">
                             <h3>Installation</h3>
                             <div class="caret">▾</div>
@@ -428,101 +307,102 @@
                                 </p>
                             </div>
                             
-                            <!-- Carousel goes here -->
-                                <!-- Carousel start: M3 install (final markup) -->
-                                <div class="informational-carousel" data-gallery="m3-install">
-                                  <div class="infc-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="M3 installation steps">
+                            <div class="informational-carousel" data-gallery="m3-install">
+                                <div class="infc-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="M3 installation steps">
                                     <div class="infc-track">
 
-                                      <div class="stepper infc-item">
-                                        <div class="media">
-                                          <a href="./custom/img/guide/guide-textures-le1.png"
-                                             class="glightbox"
-                                             data-title="Texture Order for LE1"
-                                             data-description="Your order should look like this, more or less.">
-                                            <img src="./custom/img/guide/guide-textures-le1.png"
-                                                 alt="M3 releases page (download)"
-                                                 class="media-image">
-                                          </a>
+                                        <div class="stepper infc-item">
+                                            <div class="media">
+                                                <a href="./custom/img/guide/guide-textures-le1.png"
+                                                   class="glightbox"
+                                                   data-title="Texture Order for LE1"
+                                                   data-description="Your order should look like this, more or less.">
+                                                    <img src="./custom/img/guide/guide-textures-le1.png"
+                                                         alt="M3 releases page (download)"
+                                                         class="media-image">
+                                                </a>
 
-                                          <div class="media-body">
-                                            <p class="media-text text-standard">
-                                                <b>Texture Order for LE1</b>:<br>Your order should look like this, more or less.
-                                                <br><br>
-                                                (<b>Hint</b>: You can click on the images to view them fullscreen.)
-                                            </p>
-                                          </div>
+                                                <div class="media-body">
+                                                    <p class="media-text text-standard">
+                                                        <b>Texture Order for LE1</b>:<br>Your order should look like this, more or less.
+                                                        <br><br>
+                                                        (<b>Hint</b>: You can click on the images to view them fullscreen.)
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                      </div>
 
-                                      <div class="stepper infc-item">
-                                        <div class="media">
-                                          <a href="./custom/img/guide/guide-textures-le2.png"
-                                             class="glightbox"
-                                             data-title="Texture Order for LE2"
-                                             data-description="Your order should look like this, more or less.">
-                                            <img src="./custom/img/guide/guide-textures-le2.png"
-                                                 alt="Extract M3 archive to a folder"
-                                                 class="media-image">
-                                          </a>
+                                        <div class="stepper infc-item">
+                                            <div class="media">
+                                                <a href="./custom/img/guide/guide-textures-le2.png"
+                                                   class="glightbox"
+                                                   data-title="Texture Order for LE2"
+                                                   data-description="Your order should look like this, more or less.">
+                                                    <img src="./custom/img/guide/guide-textures-le2.png"
+                                                         alt="Extract M3 archive to a folder"
+                                                         class="media-image">
+                                                </a>
 
-                                          <div class="media-body">
-                                            <p class="media-text text-standard">
-                                                <b>Texture Order for LE2</b>:<br>Your order should look like this, more or less.
-                                                <br><br>
-                                                (<b>Hint</b>: You can click on the images to view them fullscreen.)
-                                            </p>
-                                          </div>
+                                                <div class="media-body">
+                                                    <p class="media-text text-standard">
+                                                        <b>Texture Order for LE2</b>:<br>Your order should look like this, more or less.
+                                                        <br><br>
+                                                        (<b>Hint</b>: You can click on the images to view them fullscreen.)
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                      </div>
 
-                                      <div class="stepper infc-item">
-                                        <div class="media">
-                                          <a href="./custom/img/guide/guide-textures-le3.png"
-                                             class="glightbox"
-                                             data-title="Texture Order for LE3"
-                                             data-description="Your order should look like this, more or less.">
-                                            <img src="./custom/img/guide/guide-textures-le3.png"
-                                                 alt="Open M3 and point to folder"
-                                                 class="media-image">
-                                          </a>
+                                        <div class="stepper infc-item">
+                                            <div class="media">
+                                                <a href="./custom/img/guide/guide-textures-le3.png"
+                                                   class="glightbox"
+                                                   data-title="Texture Order for LE3"
+                                                   data-description="Your order should look like this, more or less.">
+                                                    <img src="./custom/img/guide/guide-textures-le3.png"
+                                                         alt="Open M3 and point to folder"
+                                                         class="media-image">
+                                                </a>
 
-                                          <div class="media-body">
-                                            <p class="media-text text-standard">
-                                                <b>Texture Order for LE3</b>:<br>Your order should look like this, more or less.
-                                                <br><br>
-                                                (<b>Hint</b>: You can click on the images to view them fullscreen.)
-                                            </p>
-                                          </div>
+                                                <div class="media-body">
+                                                    <p class="media-text text-standard">
+                                                        <b>Texture Order for LE3</b>:<br>Your order should look like this, more or less.
+                                                        <br><br>
+                                                        (<b>Hint</b>: You can click on the images to view them fullscreen.)
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                      </div>
 
-                                    </div> <!-- /.infc-track -->
-                                  </div> <!-- /.infc-viewport -->
+                                    </div>
+                                </div>
 
-                                  <!-- Controls row (arrows + dots) — placed in the HTML so layout is explicit -->
-                                  <div class="infc-controls" aria-hidden="false">
+                                <div class="infc-controls" aria-hidden="false">
                                     <button class="infc-arrow infc-prev" aria-label="Previous step" type="button">‹</button>
                                     <div class="infc-dots" role="tablist" aria-label="Step indicators"></div>
                                     <button class="infc-arrow infc-next" aria-label="Next step" type="button">›</button>
-                                  </div>
                                 </div>
-                                <!-- Carousel end -->
+                            </div>
                             
                             <p class="text-standard">
-                                Once your order looks good, click <b>Install all mods</b>!<br>
-                                Now sit back and relax—depending on your setup, this process might take up to an hour or more.<br><br>
+                                Once your order looks good, click <b>Install All</b>!<br>
+                                Now sit back and relax. Depending on your setup, this process might take up to an hour or more.<br><br>
                                 When it’s done, you’ll see a confirmation popup. Launch your game to ensure nothing’s melted or attached itself backwards.
                             </p>
+                            
+                            <br>
+                            <hr style="color:#fff;width:99%;margin-left:0">
+                            <br>
                             
                             <div id="me-par" class="anchor" data-parent="install">
                                 <h4>The End</h4>
                                 <p class="text-standard">
-                                    Congrats! You’ve successfully completed this guide, and your Mass Effect experience should now be pretty enhanced.<br><br>
-                                    You can now safely close both <b>MEM</b> and <b>M3</b>—your textures are fully installed.<br><br>
-                                    This also means our time together has come to an end for now. But don’t worry, I’ll be here whenever the urge for another galaxy-wide bar crawl strikes.<br><br>
-                                    I hope this guide has been at least a little useful to you. If so, I’d love to hear your feedback on the Nexus page.<br><br>
-                                    Thank you and good night, Commander.
+                                    Congrats! You've made it to last call.<br>
+                                    Your Mass Effect experience should now be brighter, sharper, and hopefully still functioning.<br>
+                                    You can safely close both <b>MEM</b> and <b>M3</b> - your textures are installed and your galaxy is in high definition.<br><br>
+                                    This also means our time together comes to and end... for now.<br>
+                                    But I'll be right here if the urge for another crawl strikes.<br><br>
+                                    Thanks for sticking around, and good night, Commander.
                                 </p>
                             </div>
                             
@@ -531,7 +411,6 @@
                     
                 </article>
                 
-                <!-- Pager -->
                 <div class="pager-box pager" role="navigation" aria-label="Panel navigation">
                     <div class="pager-left">
                         <button class="btn text-standard" id="expandAllBtn" aria-label="Expand all panels">Expand All</button>
@@ -567,19 +446,18 @@
     <script src="./custom/external/glightbox/dist/js/glightbox.min.js" defer></script>
     <script src="./custom/js/guide.js" defer></script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const toggle = document.getElementById('fontToggle');
-        const key = 'accessibleFonts';
-        const enabled = localStorage.getItem(key) === 'true';
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('fontToggle');
+            const key = 'accessibleFonts';
+            const enabled = localStorage.getItem(key) === 'true';
 
-        if (enabled) document.body.classList.add('accessible-fonts');
+            if (enabled) document.body.classList.add('accessible-fonts');
 
-        toggle.addEventListener('click', () => {
-            document.body.classList.toggle('accessible-fonts');
-            localStorage.setItem(key, document.body.classList.contains('accessible-fonts'));
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('accessible-fonts');
+                localStorage.setItem(key, document.body.classList.contains('accessible-fonts'));
+            });
         });
-        
-    });
     </script>
 
 </body>
