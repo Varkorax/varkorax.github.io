@@ -1,11 +1,11 @@
 {
   "game": "LE1",
-  "description": "A crisp, spirited opener - refreshing the legend from the very first sip.",
+  "description": "A crisp, spirited opener - refreshing the legend from the very first sip. Some mods had to be removed temporarily due to the LE1CP Framework update.",
   "restorebeforeinstall": false,
   "mods": [
     {
       "moddescpath": "LE1\\LE1 Community Patch\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:40:16.4752313+01:00",
+      "configurationtime": "2025-11-08T21:59:00.0965062+01:00",
       "moddeschash": "7ab7bc2c343bf62d13c068ffe685565f",
       "moddescsize": 1134,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/23?tab=files&file_id=12218",
@@ -17,7 +17,7 @@
     },
     {
       "moddescpath": "LE1\\Myriad Pro Begone (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:41:51.6048224+01:00",
+      "configurationtime": "2025-11-08T22:00:27.4205106+01:00",
       "moddeschash": "00a62dee427df0659e8ed10a5107a6c8",
       "moddescsize": 1112,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1070?tab=files&file_id=12151",
@@ -29,7 +29,7 @@
     },
     {
       "moddescpath": "LE1\\Advanced Weapon Models for LE1\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:23.3321978+01:00",
+      "configurationtime": "2025-11-08T22:01:29.780713+01:00",
       "moddeschash": "730c038b23936111c25316d2bf69d2d5",
       "moddescsize": 1686,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/853?tab=files&file_id=12228",
@@ -44,7 +44,7 @@
     },
     {
       "moddescpath": "LE1\\Halcyon Hairpack (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:27.1748336+01:00",
+      "configurationtime": "2025-11-08T22:01:31.2682993+01:00",
       "moddeschash": "5dc7a34b1be41f64b146da8589a2dbe6",
       "moddescsize": 541,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1497?tab=files&file_id=12225",
@@ -56,10 +56,10 @@
     },
     {
       "moddescpath": "LE1\\Appearance Modification Menu\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:29.6568038+01:00",
-      "moddeschash": "2ad7b061c9b06515e72b1d83508d6852",
-      "moddescsize": 403,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2513?tab=files&file_id=12219",
+      "configurationtime": "2025-11-08T22:01:31.3802032+01:00",
+      "moddeschash": "b5889a594cebeeb85dca3d71aaa9e6b1",
+      "moddescsize": 405,
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2513?tab=files&file_id=12318",
       "userchosenoptions": [],
       "allchosenoptions": [],
       "haschosenoptions": true,
@@ -68,7 +68,7 @@
     },
     {
       "moddescpath": "LE1\\Geth Retrofits (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:34.3491278+01:00",
+      "configurationtime": "2025-11-08T22:01:35.650959+01:00",
       "moddeschash": "e667a2baf706d0b7a20648ec92eef18d",
       "moddescsize": 1003,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2599?tab=files&file_id=10838",
@@ -80,11 +80,17 @@
     },
     {
       "moddescpath": "LE1\\LE1 Streamlined Weapon Loadouts\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:38.7351545+01:00",
-      "moddeschash": "c33f741bcefa6a836e41a39304f6886e",
-      "moddescsize": 988,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/870?tab=files&file_id=11620",
-      "userchosenoptions": [],
+      "configurationtime": "2025-11-08T22:01:42.1982523+01:00",
+      "moddeschash": "7d4bf2e06f181b4971234d3e920d442e",
+      "moddescsize": 1030,
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/870?tab=files&file_id=12288",
+      "userchosenoptions": [
+        {
+          "IsPlus": true,
+          "Key": "591EBBF9",
+          "OriginalValue": "591EBBF9"
+        }
+      ],
       "allchosenoptions": [
         "591EBBF9"
       ],
@@ -94,7 +100,7 @@
     },
     {
       "moddescpath": "LE1\\Elements of Comparative Weaponry (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:49.3092981+01:00",
+      "configurationtime": "2025-11-08T22:01:52.0114238+01:00",
       "moddeschash": "e354c7327aeceebf76cecfe2e3780a9d",
       "moddescsize": 530,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/639?tab=files&file_id=10287",
@@ -106,7 +112,7 @@
     },
     {
       "moddescpath": "LE1\\Pinnacle Station DLC\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:49.9706128+01:00",
+      "configurationtime": "2025-11-08T22:01:52.6537663+01:00",
       "moddeschash": "945f9b214547213cb6cb872728157d59",
       "moddescsize": 980,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/832?tab=files&file_id=10668",
@@ -118,7 +124,7 @@
     },
     {
       "moddescpath": "LE1\\Private Message Terminal (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:51.4664798+01:00",
+      "configurationtime": "2025-11-08T22:01:54.2073827+01:00",
       "moddeschash": "05089bd74a3908d7b7c617ccb17b41fc",
       "moddescsize": 587,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1525?tab=files&file_id=9124",
@@ -130,7 +136,7 @@
     },
     {
       "moddescpath": "LE1\\A Little Help From My Friends (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:52.6779742+01:00",
+      "configurationtime": "2025-11-08T22:01:55.1453447+01:00",
       "moddeschash": "1a1aa0f81aa83b004b6bd452918a6ef7",
       "moddescsize": 510,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1526?tab=files&file_id=9125",
@@ -142,7 +148,7 @@
     },
     {
       "moddescpath": "LE1\\ME1 Dossiers Restored (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:52.7880466+01:00",
+      "configurationtime": "2025-11-08T22:01:55.238119+01:00",
       "moddeschash": "80ae143150aa0c2772edfb774b6cf208",
       "moddescsize": 396,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2800?tab=files&file_id=11919",
@@ -154,10 +160,10 @@
     },
     {
       "moddescpath": "LE1\\Casual Hubs for LE1\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:56.5534012+01:00",
-      "moddeschash": "147f70b22810469b506373dc6e896efb",
-      "moddescsize": 1376,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/574?tab=files&file_id=8339",
+      "configurationtime": "2025-11-08T22:01:58.0562584+01:00",
+      "moddeschash": "8db1a1ca8ccac4a533cfdd59443f55e0",
+      "moddescsize": 1423,
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/574?tab=files&file_id=12278",
       "userchosenoptions": [],
       "allchosenoptions": [
         "BD5BB938",
@@ -168,35 +174,11 @@
       "modname": "Casual Hubs for LE1"
     },
     {
-      "moddescpath": "LE1\\Black Market License (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:42:59.9554374+01:00",
-      "moddeschash": "052b85c80b078d5008ee1cabec9835f3",
-      "moddescsize": 1228,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/661?tab=files&file_id=10157",
-      "userchosenoptions": [],
-      "allchosenoptions": [],
-      "haschosenoptions": true,
-      "IsStandalone": false,
-      "modname": "Black Market License (LE1)"
-    },
-    {
-      "moddescpath": "LE1\\Return to Normandy LE1\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:00.6567829+01:00",
-      "moddeschash": "1e9a34c4de9912a13b2db7ea1256a1b2",
-      "moddescsize": 377,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1580?tab=files&file_id=6341",
-      "userchosenoptions": [],
-      "allchosenoptions": [],
-      "haschosenoptions": true,
-      "IsStandalone": true,
-      "modname": "Return to Normandy LE1"
-    },
-    {
       "moddescpath": "LE1\\Normandy Rapid Transit\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:00.7570108+01:00",
-      "moddeschash": "6bd6e124c90a48c087dc2f9633ce6ab8",
-      "moddescsize": 498,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/755?tab=files&file_id=6735",
+      "configurationtime": "2025-11-08T22:01:58.4942424+01:00",
+      "moddeschash": "cb5e143e5de53330118bcb86f95ba4cb",
+      "moddescsize": 545,
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/755?tab=files&file_id=12277",
       "userchosenoptions": [],
       "allchosenoptions": [],
       "haschosenoptions": true,
@@ -205,7 +187,7 @@
     },
     {
       "moddescpath": "LE1\\Skip Minigames (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:00.9996239+01:00",
+      "configurationtime": "2025-11-08T22:01:58.6128168+01:00",
       "moddeschash": "709b66ec6aebc721f78e49f0376f3ebf",
       "moddescsize": 654,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/360?tab=files&file_id=1421",
@@ -217,7 +199,7 @@
     },
     {
       "moddescpath": "LE1\\Morlan's 'Famous' Iconic Armor Shop\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:01.620336+01:00",
+      "configurationtime": "2025-11-08T22:01:59.3506513+01:00",
       "moddeschash": "040f24dbee5c2c4467e5a32a8c2da942",
       "moddescsize": 433,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/684?tab=files&file_id=12121",
@@ -229,19 +211,21 @@
     },
     {
       "moddescpath": "LE1\\Charted Worlds (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:01.7928626+01:00",
-      "moddeschash": "be5cc230bd9c89f975452c4bfd97152e",
-      "moddescsize": 388,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/524?tab=files&file_id=10211",
+      "configurationtime": "2025-11-08T22:02:03.1952204+01:00",
+      "moddeschash": "f663d83e32acc04a16fafd8954686fc3",
+      "moddescsize": 715,
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/524?tab=files&file_id=12272",
       "userchosenoptions": [],
-      "allchosenoptions": [],
+      "allchosenoptions": [
+        "550E4571"
+      ],
       "haschosenoptions": true,
-      "IsStandalone": true,
+      "IsStandalone": false,
       "modname": "Charted Worlds (LE1)"
     },
     {
       "moddescpath": "LE1\\Galaxy Map Trackers (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:02.2528026+01:00",
+      "configurationtime": "2025-11-08T22:02:03.6176668+01:00",
       "moddeschash": "4d435bd9cacf44418cad615a7cdf68e5",
       "moddescsize": 428,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/426?tab=files&file_id=10285",
@@ -252,20 +236,22 @@
       "modname": "Galaxy Map Trackers (LE1)"
     },
     {
-      "moddescpath": "LE1\\Mission Timings\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:02.3905834+01:00",
-      "moddeschash": "d7dd5e348782a4208ce19941ab92879e",
-      "moddescsize": 658,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/754?tab=files&file_id=2615",
+      "moddescpath": "LE1\\Black Market License (LE1)\\moddesc.ini",
+      "configurationtime": "2025-11-08T22:02:05.515702+01:00",
+      "moddeschash": "8fe5570d5518775dedd264cf48a0fcdb",
+      "moddescsize": 1364,
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/661?tab=files&file_id=12301",
       "userchosenoptions": [],
-      "allchosenoptions": [],
+      "allchosenoptions": [
+        "550E4571"
+      ],
       "haschosenoptions": true,
-      "IsStandalone": true,
-      "modname": "Mission Timings"
+      "IsStandalone": false,
+      "modname": "Black Market License (LE1)"
     },
     {
       "moddescpath": "LE1\\N7 MAKO (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:05.3917543+01:00",
+      "configurationtime": "2025-11-08T22:02:07.8617844+01:00",
       "moddeschash": "d5d77878fe66ca96fe13af9bc0aad6de",
       "moddescsize": 1104,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/309?tab=files&file_id=1270",
@@ -279,7 +265,7 @@
     },
     {
       "moddescpath": "LE1\\XP Rescale (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:07.6359526+01:00",
+      "configurationtime": "2025-11-08T22:02:09.4702854+01:00",
       "moddeschash": "849924040267deb1cd393f1ea1458525",
       "moddescsize": 3810,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/369?tab=files&file_id=9657",
@@ -294,7 +280,7 @@
     },
     {
       "moddescpath": "LE1\\Dr Heart Experiments\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:08.6534597+01:00",
+      "configurationtime": "2025-11-08T22:02:10.3913234+01:00",
       "moddeschash": "ca708d51b43b93b7187fe21c55895888",
       "moddescsize": 692,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/597?tab=files&file_id=12220",
@@ -305,20 +291,8 @@
       "modname": "Dr. Heart Experiments"
     },
     {
-      "moddescpath": "LE1\\Mira, Please Be Quiet\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:08.7501875+01:00",
-      "moddeschash": "4a9581ea463905086da3a9d7e1d830fe",
-      "moddescsize": 353,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/734?tab=files&file_id=2978",
-      "userchosenoptions": [],
-      "allchosenoptions": [],
-      "haschosenoptions": true,
-      "IsStandalone": true,
-      "modname": "Mira, Please Be Quiet"
-    },
-    {
       "moddescpath": "LE1\\Saren Stages LE\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:08.986902+01:00",
+      "configurationtime": "2025-11-08T22:02:10.4840573+01:00",
       "moddeschash": "a5d2d8f44e43f918b98d9b0d97f8493d",
       "moddescsize": 1474,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/666?tab=files&file_id=12223",
@@ -330,7 +304,7 @@
     },
     {
       "moddescpath": "LE1\\Alliance Uniform Consistency\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:15.0455344+01:00",
+      "configurationtime": "2025-11-08T22:02:13.5225175+01:00",
       "moddeschash": "53bd0761e42b3f081f957644f8001cbd",
       "moddescsize": 863,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/799?tab=files&file_id=12237",
@@ -344,7 +318,7 @@
     },
     {
       "moddescpath": "LE1\\Liara Consistency Mod (ME1LE)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:20.0399436+01:00",
+      "configurationtime": "2025-11-08T22:02:16.6799625+01:00",
       "moddeschash": "db76d81ccfb3a299e19dde56da301222",
       "moddescsize": 1608,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1183?tab=files&file_id=12221",
@@ -358,7 +332,7 @@
     },
     {
       "moddescpath": "LE1\\Anderson Consistency Mod\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:35.588196+01:00",
+      "configurationtime": "2025-11-08T22:02:21.0478798+01:00",
       "moddeschash": "553e4af81e080149f60e021faa15397b",
       "moddescsize": 2037,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2881?tab=files&file_id=12235",
@@ -372,7 +346,7 @@
     },
     {
       "moddescpath": "LE1\\Prothean Consistency Mod (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:43:40.845461+01:00",
+      "configurationtime": "2025-11-08T22:02:24.7581144+01:00",
       "moddeschash": "904a98e9cc487aa656b452d61e602d16",
       "moddescsize": 700,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1538?tab=files&file_id=12238",
@@ -384,7 +358,7 @@
     },
     {
       "moddescpath": "LE1\\Unique Udina Face Restored LE1\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:44:06.8285688+01:00",
+      "configurationtime": "2025-11-08T22:02:32.3622997+01:00",
       "moddeschash": "fa33f0d5c6d3084241677655c9c90343",
       "moddescsize": 2416,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2878?tab=files&file_id=12234",
@@ -404,10 +378,10 @@
     },
     {
       "moddescpath": "LE1\\ME¹LLO\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:44:16.5003303+01:00",
-      "moddeschash": "4878150065f7fed67cd1fd6e796a7d2d",
+      "configurationtime": "2025-11-08T22:02:34.508734+01:00",
+      "moddeschash": "ab5e5d5f1c0acb83a96734e5defc0687",
       "moddescsize": 7272,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1500?tab=files&file_id=12224",
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1500?tab=files&file_id=12299",
       "userchosenoptions": [],
       "allchosenoptions": [
         "Option1_All",
@@ -419,10 +393,10 @@
     },
     {
       "moddescpath": "LE1\\LE1 Diversification Project\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:44:52.5004757+01:00",
-      "moddeschash": "d0930d7a5f5859e8aa432abf63509b1f",
-      "moddescsize": 2546,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1172?tab=files&file_id=12222",
+      "configurationtime": "2025-11-08T22:03:07.8815466+01:00",
+      "moddeschash": "8fe88c656950f01561f16ee3c5682617",
+      "moddescsize": 2592,
+      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1172?tab=files&file_id=12285",
       "userchosenoptions": [],
       "allchosenoptions": [
         "2D4887C5",
@@ -435,7 +409,7 @@
     },
     {
       "moddescpath": "LE1\\Spectre Expansion Mod (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:45:54.5590078+01:00",
+      "configurationtime": "2025-11-08T22:03:46.4433755+01:00",
       "moddeschash": "ccf16564d4c70ba79b0d2ceb915e7e42",
       "moddescsize": 659,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2951?tab=files&file_id=12202",
@@ -447,7 +421,7 @@
     },
     {
       "moddescpath": "LE1\\Remove Feros Color Filter\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:46:00.0841667+01:00",
+      "configurationtime": "2025-11-08T22:03:53.4590534+01:00",
       "moddeschash": "6efb50af3c8a15f802f722045f5f56da",
       "moddescsize": 1047,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/927?tab=files&file_id=12245",
@@ -460,22 +434,8 @@
       "modname": "Remove Feros Color Filter"
     },
     {
-      "moddescpath": "LE1\\Keepers Finders (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:46:26.2019726+01:00",
-      "moddeschash": "36927ab982eb899ec2d2a2e813a42a6f",
-      "moddescsize": 1501,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/1043?tab=files&file_id=9630",
-      "userchosenoptions": [],
-      "allchosenoptions": [
-        "AC203E71"
-      ],
-      "haschosenoptions": true,
-      "IsStandalone": false,
-      "modname": "Keepers Finders (LE1)"
-    },
-    {
       "moddescpath": "LE1\\A Lot of Videos for LE1\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:46:26.5436054+01:00",
+      "configurationtime": "2025-11-08T22:03:53.7510857+01:00",
       "moddeschash": "e3405f72a2d454330555215d79ebd47c",
       "moddescsize": 554,
       "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/3?tab=files&file_id=7703",
@@ -484,32 +444,6 @@
       "haschosenoptions": true,
       "IsStandalone": true,
       "modname": "A Lot of Videos for LE1"
-    },
-    {
-      "moddescpath": "LE1\\Smoother GUI (LE1)\\moddesc.ini",
-      "configurationtime": "2025-11-08T02:47:06.8206539+01:00",
-      "moddeschash": "8e5fea65a1bb7a6728c2b62af2fa9f52",
-      "moddescsize": 17427,
-      "downloadlink": "https://nexusmods.com/masseffectlegendaryedition/mods/2121?tab=files&file_id=11459",
-      "userchosenoptions": [
-        {
-          "IsPlus": true,
-          "Key": "FakeMyriad",
-          "OriginalValue": "FakeMyriad"
-        }
-      ],
-      "allchosenoptions": [
-        "13F44ECE",
-        "8CF7D3F4",
-        "FakeMyriad",
-        "FakeNoneNoESP",
-        "FakeNoneRemoveHit",
-        "FakeNoneImput",
-        "FakePinnacle"
-      ],
-      "haschosenoptions": true,
-      "IsStandalone": false,
-      "modname": "Smoother GUI (LE1)"
     }
   ],
   "asimods": [
@@ -527,6 +461,6 @@
     }
   ],
   "texturemodfiles": [],
-  "queuename": "Flux Fizz (Milky Way Bar Crawl)",
-  "ImporterDescription": "Mods that will be installed by install group:\r\n - LE1 Community Patch\r\n - Myriad Pro Begone (LE1)\r\n - Advanced Weapon Models for LE1\r\n - Halcyon Hairpack (LE1)\r\n - Appearance Modification Menu\r\n - Geth Retrofits (LE1)\r\n - LE1 Streamlined Weapon Loadouts\r\n - Elements of Comparative Weaponry (LE1)\r\n - Pinnacle Station DLC\r\n - Private Message Terminal (LE1)\r\n - A Little Help From My Friends (LE1)\r\n - ME1 Dossiers Restored (LE1)\r\n - Casual Hubs for LE1\r\n - Black Market License (LE1)\r\n - Return to Normandy LE1\r\n - Normandy Rapid Transit\r\n - Skip Minigames (LE1)\r\n - Morlan's 'Famous' Iconic Armor Shop\r\n - Charted Worlds (LE1)\r\n - Galaxy Map Trackers (LE1)\r\n - Mission Timings\r\n - N7 MAKO (LE1)\r\n - XP Rescale (LE1)\r\n - Dr. Heart Experiments\r\n - Mira, Please Be Quiet\r\n - Saren Stages LE\r\n - Alliance Uniform Consistency\r\n - Liara Consistency Mod (ME1LE)\r\n - Anderson Consistency Mod\r\n - Prothean Consistency Mod (LE1)\r\n - Unique Udina Face Restored LE1\r\n - ME¹LLO\r\n - LE1 Diversification Project\r\n - Spectre Expansion Mod (LE1)\r\n - Remove Feros Color Filter\r\n - Keepers Finders (LE1)\r\n - A Lot of Videos for LE1\r\n - Smoother GUI (LE1)\r\n - Autoload Enabler (ASI mod)\r\n - PNG ScreenShots (ASI mod)\r\n - AutoTOC (ASI mod)\r\n\nImporting will add this install group to Batch Installer. This does not import any of the listed mods."
+  "queuename": "Flux Fizz Lite (Milky Way Bar Crawl)",
+  "ImporterDescription": "Mods that will be installed by install group:\r\n\nImporting will add this install group to Batch Installer. This does not import any of the listed mods."
 }
